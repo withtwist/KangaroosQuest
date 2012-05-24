@@ -1,0 +1,16 @@
+level0
+GERUBELAMESH 35080 1 Shortleft 55830 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+level1
+GRUIJ 40050 0 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+level2
+Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+level3
+Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+level4
+Grubla 12600 0 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+level5
+Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+level6
+Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+level7
+Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
