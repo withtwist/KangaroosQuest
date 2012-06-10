@@ -1,5 +1,7 @@
 package se.chalmers.kangaroo.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 
@@ -19,7 +21,7 @@ import se.chalmers.kangaroo.model.utils.Position;
  * @modifiedby simonal
  * @modifiedby arvidk
  */
-public class GameView extends JPanelWithBackground{
+public class GameView extends JPanelWithBackground {
 	private GameModel gm;
 	private HashMap<Creature, Animation> creatureAnimations;
 	private KangarooAnimation ka;
@@ -53,10 +55,11 @@ public class GameView extends JPanelWithBackground{
 		pv.setOpaque(isRunning);
 		this.add(pv);
 	}
+
 	/**
 	 * Use this when you want to initialize the Animations.
 	 */
-	public void initAnimations(){
+	public void initAnimations() {
 		creatureAnimations = new HashMap<Creature, Animation>();
 		AnimationFactory af = new AnimationFactory();
 		for (int i = 0; i < gm.getGameMap().getCreatureSize(); i++) {
@@ -81,21 +84,38 @@ public class GameView extends JPanelWithBackground{
 		/* Render the tiles */
 		for (int y = 0; y < gm.getGameMap().getTileHeight(); y++)
 			for (int x = drawFrom; x < drawFrom + 33; x++) {
-				ImageIcon i = new ImageIcon("../gfx/tiles/tile_"
-						+ gm.getGameMap().getTile(x, y).getId() + ".png");
-				i.paintIcon(null, g, (x - drawFrom) * 32 - fixPosition,
-						(y - 2) * 32);
+				Image img = Toolkit.getDefaultToolkit().getImage(
+						"resources/gfx/tiles/tileChart.png");
+				g.drawImage(
+						img,
+						(x - drawFrom) * 32 - fixPosition,
+						(y - 2) * 32,
+						((x - drawFrom) * 32 - fixPosition) + 32,
+						((y - 2) * 32) + 32,
+						(((gm.getGameMap().getTile(x, y).getId() - 1) % 20)) * 32,
+						((gm.getGameMap().getTile(x, y).getId() - 1) / 20) * 32,
+						(((gm.getGameMap().getTile(x, y).getId() - 1) % 20)) * 32 + 32,
+						((gm.getGameMap().getTile(x, y).getId() - 1) / 20) * 32 + 32,
+						null, null);
 			}
 		/* Render the items */
 		for (int i = 0; i < gm.getGameMap().amountOfItems(); i++) {
 			Item item = gm.getGameMap().getItem(i);
 			if (item.getPosition().getX() > drawFrom
 					&& item.getPosition().getX() < drawFrom + 32) {
-				ImageIcon img = new ImageIcon("../gfx/tiles/tile_"
-						+ item.getId() + ".png");
-				img.paintIcon(null, g, (item.getPosition().getX() - drawFrom)
-						* 32 - fixPosition,
-						(item.getPosition().getY() - 2) * 32);
+				Image img = Toolkit.getDefaultToolkit().getImage(
+						"resources/gfx/tiles/tileChart.png");
+				g.drawImage(
+						img,
+						(item.getPosition().getX() - drawFrom) * 32 - fixPosition,
+						(item.getPosition().getY() - 2) * 32,
+						((item.getPosition().getX() - drawFrom) * 32 - fixPosition) + 32,
+						((item.getPosition().getY() - 2) * 32) + 32,
+						(((item.getId() - 1) % 20)) * 32,
+						((item.getId() - 1) / 20) * 32,
+						(((item.getId() - 1) % 20)) * 32 + 32,
+						((item.getId() - 1) / 20) * 32 + 32,
+						null, null);
 			}
 		}
 		/* Render the interactive objects */
@@ -103,10 +123,19 @@ public class GameView extends JPanelWithBackground{
 			InteractiveObject io = gm.getGameMap().getIObject(i);
 			if (io.getPosition().getX() > drawFrom
 					&& io.getPosition().getX() < drawFrom + 32) {
-				ImageIcon img = new ImageIcon("../gfx/tiles/tile_" + io.getId()
-						+ ".png");
-				img.paintIcon(null, g, (io.getPosition().getX() - drawFrom)
-						* 32 - fixPosition, (io.getPosition().getY() - 2) * 32);
+				Image img = Toolkit.getDefaultToolkit().getImage(
+						"resources/gfx/tiles/tileChart.png");
+				g.drawImage(
+						img,
+						(io.getPosition().getX() - drawFrom) * 32 - fixPosition,
+						(io.getPosition().getY() - 2) * 32,
+						((io.getPosition().getX() - drawFrom) * 32 - fixPosition) + 32,
+						((io.getPosition().getY() - 2) * 32) + 32,
+						(((io.getId() - 1) % 20)) * 32,
+						((io.getId() - 1) / 20) * 32,
+						(((io.getId() - 1) % 20)) * 32 + 32,
+						((io.getId() - 1) / 20) * 32 + 32,
+						null, null);
 			}
 		}
 		/* Render the creatures */
@@ -142,7 +171,7 @@ public class GameView extends JPanelWithBackground{
 			return gm.getGameMap().getTileWidth() - 33;
 		return kPos - 16;
 	}
-	
+
 	public boolean isRunning() {
 		return isRunning;
 	}
@@ -161,10 +190,11 @@ public class GameView extends JPanelWithBackground{
 		this.repaint();
 		this.validate();
 	}
-	
-	public void showVictoryView(){
-		vv = new VictoryView("resources/gfx/misc/victory_background.png", gm.getDeathCount(), gm.getTime(), this, gm.getLevel());
-		vv.setVisible(true); 
+
+	public void showVictoryView() {
+		vv = new VictoryView("resources/gfx/misc/victory_background.png",
+				gm.getDeathCount(), gm.getTime(), this, gm.getLevel());
+		vv.setVisible(true);
 		vv.setOpaque(true);
 		this.add(vv);
 		this.repaint();
@@ -172,27 +202,26 @@ public class GameView extends JPanelWithBackground{
 		this.validate();
 		this.revalidate();
 	}
-	
-	public void removeVictoryView(){
+
+	public void removeVictoryView() {
 		this.remove(vv);
 		newLevel = false;
 	}
-	
-	
-	public void setNewLevel(boolean b){
-		newLevel = b; 
+
+	public void setNewLevel(boolean b) {
+		newLevel = b;
 	}
-	
-	public boolean startNewLevel(){
+
+	public boolean startNewLevel() {
 		return newLevel;
 	}
-	
-	public void start(){
+
+	public void start() {
 		isRunning = true;
 		pcs.firePropertyChange("start", 0, 1);
 	}
-	
-	public PropertyChangeSupport getObserver(){
+
+	public PropertyChangeSupport getObserver() {
 		return pcs;
 	}
 }
