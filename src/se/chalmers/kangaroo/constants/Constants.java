@@ -2,6 +2,8 @@ package se.chalmers.kangaroo.constants;
 
 import java.awt.Dimension;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 /**
  * A class to keep track of all constants. A class with only public static final
  * variables.
@@ -54,11 +56,22 @@ public class Constants {
 	/*
 	 * Constants for title preferences.
 	 */
-
 	public static final String TITLE_START = "<html><body><font size='45'>";
 	public static final String TITLE_END = "</font></body></html>";
 
 	public static final int NUMBER_OF_LEVELS = 7;
 
 	public static final int NUMBER_OF_HIGHSCORENAMES = 10;
+	
+	/*
+	 * Constants for settings file
+	 */
+	public static final String SETTINGS_FILE_NAME ="settings.txt";
+	public static final int NUMBER_OF_KEYS = 4;
+	public static final int NUMBER_OF_SOUNDOPT = 2;
+	
+	public static final int SETTINGS_INTEGER = 0;
+	public static final int SETTINGS_DOUBLE = 1;
+	public static final int SETTINGS_STRING = 2;
+	
 }

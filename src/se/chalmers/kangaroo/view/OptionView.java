@@ -30,15 +30,15 @@ import se.chalmers.kangaroo.utils.GameSound;
  */
 public class OptionView extends JPanelWithBackground implements ActionListener,
 		KeyListener, MouseListener, ChangeListener {
-	private JLabel currentLeft;
-	private JLabel currentRight;
-	private JLabel currentJump;
-	private JLabel currentItem;
-	private JButton left = new JButton("GO LEFT");
-	private JButton right = new JButton("GO RIGHT");
-	private JButton jump = new JButton("JUMP");
-	private JButton item = new JButton("USE ITEM");
-	private JSlider bgSlider;
+	private JLabel currentLeftKey;
+	private JLabel currentRightKey;
+	private JLabel currentJumpKey;
+	private JLabel currentItemKey;
+	private JButton leftButton = new JButton("GO LEFT");
+	private JButton rightButton = new JButton("GO RIGHT");
+	private JButton jumpButton = new JButton("JUMP");
+	private JButton itemButton = new JButton("USE ITEM");
+	private JSlider bgMusicSlider;
 	private JSlider sfxSlider;
 	private CustomKeys ck;
 	private Menubutton back;
@@ -139,63 +139,63 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 		// Left
 		JPanel leftButtonPanel = new JPanel();
-		left.addActionListener(this);
-		left.setFocusable(false);
-		leftButtonPanel.add(left);
+		leftButton.addActionListener(this);
+		leftButton.setFocusable(false);
+		leftButtonPanel.add(leftButton);
 		kbGridPanel.add(leftButtonPanel);
-		currentLeft = new JLabel(ck.getLeftKeyName());
-		kbGridPanel.add(currentLeft);
+		currentLeftKey = new JLabel(ck.getLeftKeyName());
+		kbGridPanel.add(currentLeftKey);
 		leftButtonPanel.setMinimumSize(buttonPanelDimension);
 		leftButtonPanel.setMaximumSize(buttonPanelDimension);
 		leftButtonPanel.setPreferredSize(buttonPanelDimension);
-		left.setMinimumSize(Constants.BUTTON_RESOLUTION);
-		left.setMaximumSize(Constants.BUTTON_RESOLUTION);
-		left.setPreferredSize(Constants.BUTTON_RESOLUTION);
+		leftButton.setMinimumSize(Constants.BUTTON_RESOLUTION);
+		leftButton.setMaximumSize(Constants.BUTTON_RESOLUTION);
+		leftButton.setPreferredSize(Constants.BUTTON_RESOLUTION);
 
 		// Right
 		JPanel rightButtonPanel = new JPanel();
-		right.addActionListener(this);
-		right.setFocusable(false);
-		rightButtonPanel.add(right);
+		rightButton.addActionListener(this);
+		rightButton.setFocusable(false);
+		rightButtonPanel.add(rightButton);
 		kbGridPanel.add(rightButtonPanel);
-		currentRight = new JLabel(ck.getRightKeyName());
-		kbGridPanel.add(currentRight);
+		currentRightKey = new JLabel(ck.getRightKeyName());
+		kbGridPanel.add(currentRightKey);
 		rightButtonPanel.setMinimumSize(buttonPanelDimension);
 		rightButtonPanel.setMaximumSize(buttonPanelDimension);
 		rightButtonPanel.setPreferredSize(buttonPanelDimension);
-		right.setMinimumSize(Constants.BUTTON_RESOLUTION);
-		right.setMaximumSize(Constants.BUTTON_RESOLUTION);
-		right.setPreferredSize(Constants.BUTTON_RESOLUTION);
+		rightButton.setMinimumSize(Constants.BUTTON_RESOLUTION);
+		rightButton.setMaximumSize(Constants.BUTTON_RESOLUTION);
+		rightButton.setPreferredSize(Constants.BUTTON_RESOLUTION);
 
 		// Jump
 		JPanel jumpButtonPanel = new JPanel();
-		jump.addActionListener(this);
-		jump.setFocusable(false);
-		jumpButtonPanel.add(jump);
+		jumpButton.addActionListener(this);
+		jumpButton.setFocusable(false);
+		jumpButtonPanel.add(jumpButton);
 		kbGridPanel.add(jumpButtonPanel);
-		currentJump = new JLabel(ck.getJumpKeyName());
-		kbGridPanel.add(currentJump);
+		currentJumpKey = new JLabel(ck.getJumpKeyName());
+		kbGridPanel.add(currentJumpKey);
 		jumpButtonPanel.setMinimumSize(buttonPanelDimension);
 		jumpButtonPanel.setMaximumSize(buttonPanelDimension);
 		jumpButtonPanel.setPreferredSize(buttonPanelDimension);
-		jump.setMinimumSize(Constants.BUTTON_RESOLUTION);
-		jump.setMaximumSize(Constants.BUTTON_RESOLUTION);
-		jump.setPreferredSize(Constants.BUTTON_RESOLUTION);
+		jumpButton.setMinimumSize(Constants.BUTTON_RESOLUTION);
+		jumpButton.setMaximumSize(Constants.BUTTON_RESOLUTION);
+		jumpButton.setPreferredSize(Constants.BUTTON_RESOLUTION);
 
 		// Item
 		JPanel itemButtonPanel = new JPanel();
-		item.addActionListener(this);
-		item.setFocusable(false);
-		itemButtonPanel.add(item);
+		itemButton.addActionListener(this);
+		itemButton.setFocusable(false);
+		itemButtonPanel.add(itemButton);
 		kbGridPanel.add(itemButtonPanel);
-		currentItem = new JLabel(ck.getItemKeyName());
-		kbGridPanel.add(currentItem);
+		currentItemKey = new JLabel(ck.getItemKeyName());
+		kbGridPanel.add(currentItemKey);
 		itemButtonPanel.setMinimumSize(buttonPanelDimension);
 		itemButtonPanel.setMaximumSize(buttonPanelDimension);
 		itemButtonPanel.setPreferredSize(buttonPanelDimension);
-		item.setMinimumSize(Constants.BUTTON_RESOLUTION);
-		item.setMaximumSize(Constants.BUTTON_RESOLUTION);
-		item.setPreferredSize(Constants.BUTTON_RESOLUTION);
+		itemButton.setMinimumSize(Constants.BUTTON_RESOLUTION);
+		itemButton.setMaximumSize(Constants.BUTTON_RESOLUTION);
+		itemButton.setPreferredSize(Constants.BUTTON_RESOLUTION);
 
 		kBindingPanel.add(kbGridPanel, BorderLayout.SOUTH);
 
@@ -225,15 +225,15 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		JLabel bgTitle = new JLabel("Background Music:");
 		av.add(bgTitle);
 
-		bgSlider = new JSlider(JSlider.HORIZONTAL, 0, 100,
+		bgMusicSlider = new JSlider(JSlider.HORIZONTAL, 0, 100,
 				(int) (s.getBgVolume() * 100.0));
-		bgSlider.addChangeListener(this);
-		bgSlider.setMajorTickSpacing(25);
-		bgSlider.setMinorTickSpacing(10);
-		bgSlider.setPaintTicks(true);
-		bgSlider.setPaintLabels(true);
+		bgMusicSlider.addChangeListener(this);
+		bgMusicSlider.setMajorTickSpacing(25);
+		bgMusicSlider.setMinorTickSpacing(10);
+		bgMusicSlider.setPaintTicks(true);
+		bgMusicSlider.setPaintLabels(true);
 
-		av.add(bgSlider);
+		av.add(bgMusicSlider);
 
 		JLabel sfxTitle = new JLabel("Soundeffects:");
 		av.add(sfxTitle);
@@ -256,7 +256,7 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == left) {
+		if (src == leftButton) {
 			pressedKey = Key.LEFT;
 			this.requestFocus();
 			new Thread() {
@@ -264,19 +264,19 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 				public void run() {
 					try {
 						while (pressedKey == Key.LEFT) {
-							currentLeft.setText("Press a key...");
+							currentLeftKey.setText("Press a key...");
 							sleep(700);
-							currentLeft.setText("");
+							currentLeftKey.setText("");
 							sleep(700);
 						}
-						currentLeft.setText(ck.getLeftKeyName());
+						currentLeftKey.setText(ck.getLeftKeyName());
 					} catch (InterruptedException ie) {
 
 					}
 				}
 			}.start();
 
-		} else if (src == right) {
+		} else if (src == rightButton) {
 			pressedKey = Key.RIGHT;
 			this.requestFocus();
 			new Thread() {
@@ -284,19 +284,19 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 				public void run() {
 					try {
 						while (pressedKey == Key.RIGHT) {
-							currentRight.setText("Press a key...");
+							currentRightKey.setText("Press a key...");
 							sleep(700);
-							currentRight.setText("");
+							currentRightKey.setText("");
 							sleep(700);
 						}
-						currentRight.setText(ck.getRightKeyName());
+						currentRightKey.setText(ck.getRightKeyName());
 					} catch (InterruptedException ie) {
 
 					}
 				}
 			}.start();
 
-		} else if (src == jump) {
+		} else if (src == jumpButton) {
 			pressedKey = Key.JUMP;
 			this.requestFocus();
 			new Thread() {
@@ -304,19 +304,19 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 				public void run() {
 					try {
 						while (pressedKey == Key.JUMP) {
-							currentJump.setText("Press a key...");
+							currentJumpKey.setText("Press a key...");
 							sleep(700);
-							currentJump.setText("");
+							currentJumpKey.setText("");
 							sleep(700);
 						}
-						currentJump.setText(ck.getJumpKeyName());
+						currentJumpKey.setText(ck.getJumpKeyName());
 					} catch (InterruptedException ie) {
 
 					}
 				}
 			}.start();
 
-		} else if (src == item) {
+		} else if (src == itemButton) {
 			pressedKey = Key.ITEM;
 			this.requestFocus();
 			new Thread() {
@@ -324,12 +324,12 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 				public void run() {
 					try {
 						while (pressedKey == Key.ITEM) {
-							currentItem.setText("Press a key...");
+							currentItemKey.setText("Press a key...");
 							sleep(700);
-							currentItem.setText("");
+							currentItemKey.setText("");
 							sleep(700);
 						}
-						currentItem.setText(ck.getItemKeyName());
+						currentItemKey.setText(ck.getItemKeyName());
 					} catch (InterruptedException ie) {
 
 					}
@@ -407,8 +407,8 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if (e.getSource() == bgSlider) {
-			s.setBgVolume((double) bgSlider.getValue() / 100.0);
+		if (e.getSource() == bgMusicSlider) {
+			s.setBgVolume((double) bgMusicSlider.getValue() / 100.0);
 		} else if (e.getSource() == sfxSlider) {
 			s.setSfxVolume((double) sfxSlider.getValue() / 100.0);
 		}
