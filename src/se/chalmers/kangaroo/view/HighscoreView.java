@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import se.chalmers.kangaroo.constants.Constants;
 
@@ -48,103 +49,128 @@ public class HighscoreView extends JPanelWithBackground implements
 		back = new Menubutton("resources/gfx/buttons/back.png");
 		back.addMouseListener(this);
 		this.setLayout(new BorderLayout());
+		this.setOpaque(false);
 
-		// Header
+		// TOP
 		JPanel headerPanel = new JPanel();
 		headerPanel.setLayout(new BorderLayout());
-		int titleHeight = 100;
-
+		headerPanel.setOpaque(false);
 		this.add(headerPanel, BorderLayout.NORTH);
-		this.setMinimumSize(Constants.RESOLUTION);
-		this.setMaximumSize(Constants.RESOLUTION);
-		this.setPreferredSize(Constants.RESOLUTION);
 
-		// Back-button
-		JPanel backPanel = new JPanel(new BorderLayout());
-		backPanel.add(back, BorderLayout.WEST);
-		backPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setPreferredSize(new Dimension(
-				Constants.RESOLUTION_WIDTH / 3, titleHeight));
+		// TOP-LEFT - Back Button
+		JPanel backPanel = new JPanel();
+		backPanel.add(back);
+		backPanel.setMinimumSize(new Dimension(100, 100));
+		backPanel.setMaximumSize(new Dimension(100, 100));
+		backPanel.setPreferredSize(new Dimension(100, 100));
+		backPanel.setOpaque(false);
 		headerPanel.add(backPanel, BorderLayout.WEST);
 
-		// Title
+		// TOP-CENTER - Title
 		JPanel titlePanel = new JPanel();
-
-		title = new JLabel(
-				"<html><body><font size='45'>Highscore - Choose Level</font></body></html>");
-
+		JLabel title = new JLabel("");
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setVerticalAlignment(SwingConstants.CENTER);
 		titlePanel.add(title);
+		titlePanel.setOpaque(false);
 		headerPanel.add(title, BorderLayout.CENTER);
+		
+		// TOP-RIGHT
+		JPanel emptyWeightPanel = new JPanel();
+		emptyWeightPanel.setMinimumSize(new Dimension(100, 100));
+		emptyWeightPanel.setMaximumSize(new Dimension(100, 100));
+		emptyWeightPanel.setPreferredSize(new Dimension(100, 100));
+		emptyWeightPanel.setOpaque(false);
+		headerPanel.add(emptyWeightPanel, BorderLayout.EAST);
 
-		title.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		title.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		title.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-
-		// Content
-		JPanel levelPanel = new JPanel();
-		levelPanel.setLayout(new GridLayout(2, 5));
-		levelPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				Constants.RESOLUTION_HEIGHT - titleHeight));
-		levelPanel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				Constants.RESOLUTION_HEIGHT - titleHeight));
-		levelPanel.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				Constants.RESOLUTION_HEIGHT - titleHeight));
-
+		// CONTENT
+		JPanel contentPanel = new JPanel(new BorderLayout());
+		contentPanel.setOpaque(false);
+		this.add(contentPanel, BorderLayout.CENTER);
+		
+//		JPanel contentNorth = new JPanel();
+//		contentNorth.setOpaque(false);
+//		contentPanel.add(contentNorth, BorderLayout.NORTH);
+		
+		JPanel levelPanel = new JPanel(new GridLayout(2,6));
+		levelPanel.setOpaque(false);
+		
+		JPanel emp1 = new JPanel();
+		JPanel emp2 = new JPanel();
+		JPanel emp3 = new JPanel();
+		JPanel emp4 = new JPanel();
+		emp1.setOpaque(false);
+		emp2.setOpaque(false);
+		emp3.setOpaque(false);
+		emp4.setOpaque(false);
+		
+		levelPanel.add(emp1);
 		// Level 1
 		lv1 = new Menubutton("resources/gfx/levels/level_1.png");
+		lv1.setOpaque(false);
+		lv1.setSize(80, 80);
 		lv1.setName("1");
 		lv1.addMouseListener(this);
 		levelPanel.add(lv1);
 
 		// Level 2
 		lv2 = new Menubutton("resources/gfx/levels/level_2.png");
+		lv2.setOpaque(false);
 		lv2.setName("2");
 		lv2.addMouseListener(this);
 		levelPanel.add(lv2);
 
 		// Level 3
 		lv3 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv3.setOpaque(false);
 		lv3.setName("3");
 		lv3.addMouseListener(this);
 		levelPanel.add(lv3);
 
 		// Level 4
 		lv4 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv4.setOpaque(false);
 		lv4.setName("4");
 		lv4.addMouseListener(this);
 		levelPanel.add(lv4);
 
+		levelPanel.add(emp2);
+		levelPanel.add(emp3);
 		// Level 5
 		lv5 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv5.setOpaque(false);
 		lv5.setName("5");
 		lv5.addMouseListener(this);
 		levelPanel.add(lv5);
 
 		// Level 6
 		lv6 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv6.setOpaque(false);
 		lv6.setName("6");
 		lv6.addMouseListener(this);
 		levelPanel.add(lv6);
 
 		// Level 7
 		lv7 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv7.setOpaque(false);
 		lv7.setName("7");
 		lv7.addMouseListener(this);
 		levelPanel.add(lv7);
 
 		// Level 8
 		lv8 = new Menubutton("resources/gfx/levels/level_3.png");
+		lv8.setOpaque(false);
 		lv8.setName("8");
 		lv8.addMouseListener(this);
 		levelPanel.add(lv8);
+		
+		levelPanel.add(emp4);
 
-		this.add(levelPanel, BorderLayout.SOUTH);
+		contentPanel.add(levelPanel, BorderLayout.NORTH);
+		
+		JPanel contentSouth = new JPanel();
+		contentSouth.setOpaque(false);
+		contentPanel.add(contentSouth, BorderLayout.SOUTH);
 
 	}
 

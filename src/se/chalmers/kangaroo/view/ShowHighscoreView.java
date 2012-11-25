@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import se.chalmers.kangaroo.constants.Constants;
 import se.chalmers.kangaroo.io.Highscore;
@@ -49,144 +50,91 @@ public class ShowHighscoreView extends JPanelWithBackground implements
 		back.addMouseListener(this);
 		this.setLayout(new BorderLayout());
 
-		
-		// Header
+		// TOP
 		JPanel headerPanel = new JPanel();
 		headerPanel.setLayout(new BorderLayout());
-		int titleHeight = 100;
-
+		headerPanel.setOpaque(false);
 		this.add(headerPanel, BorderLayout.NORTH);
-		this.setMinimumSize(Constants.RESOLUTION);
-		this.setMaximumSize(Constants.RESOLUTION);
-		this.setPreferredSize(Constants.RESOLUTION);
 
-		
-		// Back-button
-		JPanel backPanel = new JPanel(new BorderLayout());
-		backPanel.add(back, BorderLayout.WEST);
-		backPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setPreferredSize(new Dimension(
-				Constants.RESOLUTION_WIDTH / 3, titleHeight));
-		
+		// TOP-LEFT - Back Button
+		JPanel backPanel = new JPanel();
+		backPanel.add(back);
+		backPanel.setMinimumSize(new Dimension(100, 100));
+		backPanel.setMaximumSize(new Dimension(100, 100));
+		backPanel.setPreferredSize(new Dimension(100, 100));
+		backPanel.setOpaque(false);
 		headerPanel.add(backPanel, BorderLayout.WEST);
 
-		
-		// Title
-		JPanel titlePanel = new JPanel();
-		JLabel title = new JLabel(Constants.TITLE_START + "Highscore - Level "
-				+ level + Constants.TITLE_END);
-		titlePanel.add(title);
-
-		headerPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		headerPanel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		headerPanel.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-
+		// TOP-CENTER - Title
+		Menubutton title = new Menubutton("resources/gfx/misc/level_name/level" + level + ".png");
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setVerticalAlignment(SwingConstants.CENTER);
 		headerPanel.add(title, BorderLayout.CENTER);
-		
-		
-		// Content
-		JPanel contentPanel = new JPanel(new GridLayout(6, 1));
+
+		// TOP-RIGHT
+		JPanel emptyWeightPanel = new JPanel();
+		emptyWeightPanel.setMinimumSize(new Dimension(100, 100));
+		emptyWeightPanel.setMaximumSize(new Dimension(100, 100));
+		emptyWeightPanel.setPreferredSize(new Dimension(100, 100));
+		emptyWeightPanel.setOpaque(false);
+		headerPanel.add(emptyWeightPanel, BorderLayout.EAST);
+
+		// CONTENT
+		JPanel contentPanel = new JPanel(new BorderLayout());
+		contentPanel.setOpaque(false);
+		this.add(contentPanel, BorderLayout.CENTER);
+
+		JPanel contentLeft = new JPanel();
+		JPanel contentRight = new JPanel();
+		JPanel contentCenter = new JPanel(new GridLayout(6, 2));
+		contentLeft.setOpaque(false);
+		contentRight.setOpaque(false);
+		contentCenter.setOpaque(false);
+		contentPanel.add(contentLeft, BorderLayout.WEST);
+		contentPanel.add(contentCenter, BorderLayout.CENTER);
+		contentPanel.add(contentRight, BorderLayout.EAST);
 
 		names = hs.getNames(level);
 		times = hs.getTimes(level);
 		deaths = hs.getDeaths(level);
-		
-		// Information Labels
-		JPanel topHead = new JPanel(new GridLayout(1, 6));
-		for (int i = 0; i < 2; i++) {
-			topHead.add(new JLabel(
-					"<html><body><h1><b>Name</b></h1></body></html>"));
-			topHead.add(new JLabel(
-					"<html><body><h1><b>Time</b></h1></body></html>"));
-			topHead.add(new JLabel(
-					"<html><body><h1><b>Deaths</b></h1></body></html>"));
+		for (int i = 0; i < 5; i++) {
+			contentCenter.add(getRankLabel(i, names[i], times[i], deaths[i]));
+			contentCenter.add(getRankLabel(i+5, names[i+5], times[i+5], deaths[i+5]));
 		}
-
-		names = hs.getNames(level);
-		times = hs.getTimes(level);
-		deaths = hs.getDeaths(level);
-
-
-		contentPanel.add(topHead);
-		
-		int j = 1;
-		JPanel row1 = new JPanel(new GridLayout(1, 6));
-		row1.setBackground(Color.PINK);
-		for (int i = 0; i < 2; i++) {
-			row1.add(new JLabel("0" + (j) + ". " + names[j-1]));
-			row1.add(new JLabel("" + times[j-1] / 1000.0));
-			row1.add(new JLabel("" + deaths[j-1]));
-			j += 5;
+	}
+	
+	private JLabel getRankLabel(int nbr, String name, int time, int deaths){
+		String s = "<html><body><table width='500'><tr>";
+		if(nbr < 5){
+			s += "<td width='35%'></td>";
 		}
-		contentPanel.add(row1);
-
-		j = 2;
-		JPanel row2 = new JPanel(new GridLayout(1, 6));
-		for (int i = 0; i < 2; i++) {
-			row2.add(new JLabel("0" + (j) + ". " + names[j-1]));
-			row2.add(new JLabel("" + times[j-1] / 1000.0));
-			row2.add(new JLabel("" + deaths[j-1]));
-			j += 5;
-
+		s += "<td width='35%'>" + name + "</td><td width='15%'>" + time
+				/ 1000.0 + "</td><td width='15%'>" + deaths
+				+ "</td>";
+		if(nbr >= 5){
+			s += "<td width='35%'></td>";
 		}
-		contentPanel.add(row2);
-		
-		j = 3;
-		JPanel row3 = new JPanel(new GridLayout(1, 6));
-		row3.setBackground(Color.PINK);
-		for (int i = 0; i < 2; i++) {
-			row3.add(new JLabel("0" + (j) + ". " + names[j-1]));
-			row3.add(new JLabel("" + times[j-1] / 1000.0));
-			row3.add(new JLabel("" + deaths[j-1]));
-			j += 5;
-		}
-		contentPanel.add(row3);
-
-		j = 4;
-		JPanel row4 = new JPanel(new GridLayout(1, 6));
-		for (int i = 0; i < 2; i++) {
-			row4.add(new JLabel("0" + (j) + ". " + names[j-1]));
-			row4.add(new JLabel("" + times[j-1] / 1000.0));
-			row4.add(new JLabel("" + deaths[j-1]));
-			j += 5;
-		}
-		contentPanel.add(row4);
-
-		j = 5;
-		JPanel row5 = new JPanel(new GridLayout(1, 6));
-		row5.setBackground(Color.PINK);
-		for (int i = 0; i < 2; i++) {
-			if(j == 10){
-				row5.add(new JLabel((j) + ". " + names[j-1]));
-			}else{
-				row5.add(new JLabel("0" + (j) + ". " + names[j-1]));
-			}
-			row5.add(new JLabel("" + times[j-1] / 1000.0));
-			row5.add(new JLabel("" + deaths[j-1]));
-			j += 5;
-		}
-		contentPanel.add(row5);
-		
-		this.add(contentPanel, BorderLayout.SOUTH);
-
+		s += "</tr></table>";
+		JLabel l = new JLabel(s);
+		l.setFont(Constants.P_RANK);
+		return l;
+	}
+	
+	private JPanel getEmptyPanel(){
+		JPanel p = new JPanel();
+		p.setOpaque(false);
+		return p;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		//Nothing to do here..
+		// Nothing to do here..
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if (e.getSource() == back)
-			back.setIcon(new ImageIcon(
-					"resources/gfx/buttons/back_onHover.png"));
+			back.setIcon(new ImageIcon("resources/gfx/buttons/back_onHover.png"));
 
 	}
 

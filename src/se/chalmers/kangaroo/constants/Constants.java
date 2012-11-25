@@ -1,6 +1,7 @@
 package se.chalmers.kangaroo.constants;
 
 import java.awt.Dimension;
+import java.awt.Font;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -22,7 +23,7 @@ public class Constants {
 	 */
 
 	public static final int TILE_INVISIBLE = 42;
-	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 ";
+	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 31 33 34 ";
 	public static final String ITEM_IDS = " 51 52 53 54 ";
 	public static final String CREATURE_IDS = " 111 112 113 114 115 116 ";
 	public static final String IOBJECTS_IDS = " 71 72 73 74 ";
@@ -31,7 +32,7 @@ public class Constants {
 	public static final String INTERACTIVE_TILES = " 91 92 93 94 95 96 ";
 	public static final String INTERACTIVE_TILES_REDBLUE = " 91 92 93 94 ";
 	public static final String INTERACTIVE_TILES_ONOFF = " 95 96 ";
-	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 ";
+	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 185 186 187 ";
 
 	/*
 	 * Constants that is used normally.
@@ -44,7 +45,7 @@ public class Constants {
 	 */
 	public static final int RESOLUTION_WIDTH = 1024;
 	public static final int RESOLUTION_HEIGHT = 576;
-	public static final Dimension RESOLUTION = new Dimension(1024, 576);
+	public static final Dimension RESOLUTION = new Dimension(RESOLUTION_WIDTH, RESOLUTION_HEIGHT);
 
 	/*
 	 * Constants for Custom Key-button dimension.
@@ -56,8 +57,9 @@ public class Constants {
 	/*
 	 * Constants for title preferences.
 	 */
-	public static final String TITLE_START = "<html><body><font size='45'>";
-	public static final String TITLE_END = "</font></body></html>";
+	public static final Font H1 = new Font("Dialog", Font.PLAIN, 36);
+	public static final Font H2 = new Font("Dialog", Font.PLAIN, 24);
+	public static final Font P_RANK = new Font("Dialog", Font.PLAIN, 18);
 
 	public static final int NUMBER_OF_LEVELS = 7;
 
@@ -73,5 +75,6 @@ public class Constants {
 	public static final int SETTINGS_INTEGER = 0;
 	public static final int SETTINGS_DOUBLE = 1;
 	public static final int SETTINGS_STRING = 2;
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 }

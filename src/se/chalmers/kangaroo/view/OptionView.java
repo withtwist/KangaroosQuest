@@ -2,6 +2,8 @@ package se.chalmers.kangaroo.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +12,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -66,84 +70,87 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		back = new Menubutton("resources/gfx/buttons/back.png");
 		back.addMouseListener(this);
 		cv.addKeyListener(this);
-		this.setLayout(new BorderLayout());
-
-		// Header
-		JPanel headerPanel = new JPanel();
-		headerPanel.setLayout(new BorderLayout());
 		int titleHeight = 100;
-		int subTitleHeight = 75;
-
-		this.add(headerPanel, BorderLayout.NORTH);
+		int subTitleHeight = 20;
+		this.setLayout(new BorderLayout());
 		this.setMinimumSize(Constants.RESOLUTION);
 		this.setMaximumSize(Constants.RESOLUTION);
 		this.setPreferredSize(Constants.RESOLUTION);
+		
+		// TOP
+		JPanel headerPanel = new JPanel();
+		headerPanel.setLayout(new BorderLayout());
+		headerPanel.setOpaque(false);
+		this.add(headerPanel, BorderLayout.NORTH);
 
-		// Back-button
-		JPanel backPanel = new JPanel(new BorderLayout());
-		backPanel.add(back, BorderLayout.WEST);
-		backPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				titleHeight));
-		backPanel.setPreferredSize(new Dimension(
-				Constants.RESOLUTION_WIDTH / 3, titleHeight));
+		// TOP-LEFT - Back Button
+		JPanel backPanel = new JPanel();
+		backPanel.add(back);
+		backPanel.setMinimumSize(new Dimension(100, 100));
+		backPanel.setMaximumSize(new Dimension(100, 100));
+		backPanel.setPreferredSize(new Dimension(100, 100));
+		backPanel.setOpaque(false);
 		headerPanel.add(backPanel, BorderLayout.WEST);
 
-		// Title
+		// TOP-CENTER - Title
 		JPanel titlePanel = new JPanel();
-		JLabel title = new JLabel(Constants.TITLE_START + "Option"
-				+ Constants.TITLE_END);
+		JLabel title = new JLabel("");
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setVerticalAlignment(SwingConstants.CENTER);
 		titlePanel.add(title);
+		titlePanel.setOpaque(false);
 		headerPanel.add(title, BorderLayout.CENTER);
+		
+		// TOP-RIGHT
+		JPanel emptyWeightPanel = new JPanel();
+		emptyWeightPanel.setMinimumSize(new Dimension(100, 100));
+		emptyWeightPanel.setMaximumSize(new Dimension(100, 100));
+		emptyWeightPanel.setPreferredSize(new Dimension(100, 100));
+		emptyWeightPanel.setOpaque(false);
+		headerPanel.add(emptyWeightPanel, BorderLayout.EAST);
 
-		headerPanel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		title.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-		title.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH,
-				titleHeight));
-
-		// Content
+		// CONTENT
 		JPanel contentPanel = new JPanel(new BorderLayout());
+		contentPanel.setOpaque(false);
 		this.add(contentPanel, BorderLayout.SOUTH);
 
-		// Key Binding
+		// CONTENT_LEFT - KEYBINDING
 		JPanel kBindingPanel = new JPanel(new BorderLayout());
-		contentPanel.add(kBindingPanel, BorderLayout.WEST);
 		kBindingPanel.setMinimumSize(new Dimension(
 				Constants.RESOLUTION_WIDTH / 3, Constants.RESOLUTION_HEIGHT
-						- titleHeight));
+				- titleHeight));
 		kBindingPanel.setMaximumSize(new Dimension(
 				Constants.RESOLUTION_WIDTH / 3, Constants.RESOLUTION_HEIGHT
-						- titleHeight));
+				- titleHeight));
 		kBindingPanel.setPreferredSize(new Dimension(
 				Constants.RESOLUTION_WIDTH / 3, Constants.RESOLUTION_HEIGHT
-						- titleHeight));
-
-		// Key Binding - Title
-		JLabel kbLabel = new JLabel("Custom Keys");
-		kBindingPanel.add(kbLabel, BorderLayout.NORTH);
-		kbLabel.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				subTitleHeight));
-		kbLabel.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				subTitleHeight));
-		kbLabel.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
-				subTitleHeight));
+				- titleHeight));
+		kBindingPanel.setOpaque(false);
+		contentPanel.add(kBindingPanel, BorderLayout.WEST);
 
 		// Key Binding - Grid
-		JPanel kbGridPanel = new JPanel(new GridLayout(4, 2));
+		JPanel kbGridPanel = new JPanel(new GridLayout(5, 2));
+		kbGridPanel.setOpaque(false);
 		Dimension buttonPanelDimension = new Dimension(
 				Constants.BUTTON_RESOLUTION_WIDTH + 20,
 				Constants.BUTTON_RESOLUTION_HEIGHT + 40);
+		JPanel emptyPanel = new JPanel();
+		JPanel emptyPanel2 = new JPanel();
+		emptyPanel.setOpaque(false);
+		emptyPanel2.setOpaque(false);
+		kbGridPanel.add(emptyPanel);
+		kbGridPanel.add(emptyPanel2);
 
 		// Left
 		JPanel leftButtonPanel = new JPanel();
+		leftButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+		leftButtonPanel.setOpaque(false);
 		leftButton.addActionListener(this);
 		leftButton.setFocusable(false);
 		leftButtonPanel.add(leftButton);
 		kbGridPanel.add(leftButtonPanel);
 		currentLeftKey = new JLabel(ck.getLeftKeyName());
+		currentLeftKey.setFont(Constants.H2);
 		kbGridPanel.add(currentLeftKey);
 		leftButtonPanel.setMinimumSize(buttonPanelDimension);
 		leftButtonPanel.setMaximumSize(buttonPanelDimension);
@@ -154,11 +161,14 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 		// Right
 		JPanel rightButtonPanel = new JPanel();
+		rightButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+		rightButtonPanel.setOpaque(false);
 		rightButton.addActionListener(this);
 		rightButton.setFocusable(false);
 		rightButtonPanel.add(rightButton);
 		kbGridPanel.add(rightButtonPanel);
 		currentRightKey = new JLabel(ck.getRightKeyName());
+		currentRightKey.setFont(Constants.H2);
 		kbGridPanel.add(currentRightKey);
 		rightButtonPanel.setMinimumSize(buttonPanelDimension);
 		rightButtonPanel.setMaximumSize(buttonPanelDimension);
@@ -169,11 +179,14 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 		// Jump
 		JPanel jumpButtonPanel = new JPanel();
+		jumpButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+		jumpButtonPanel.setOpaque(false);
 		jumpButton.addActionListener(this);
 		jumpButton.setFocusable(false);
 		jumpButtonPanel.add(jumpButton);
 		kbGridPanel.add(jumpButtonPanel);
 		currentJumpKey = new JLabel(ck.getJumpKeyName());
+		currentJumpKey.setFont(Constants.H2);
 		kbGridPanel.add(currentJumpKey);
 		jumpButtonPanel.setMinimumSize(buttonPanelDimension);
 		jumpButtonPanel.setMaximumSize(buttonPanelDimension);
@@ -184,11 +197,14 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 		// Item
 		JPanel itemButtonPanel = new JPanel();
+		itemButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+		itemButtonPanel.setOpaque(false);
 		itemButton.addActionListener(this);
 		itemButton.setFocusable(false);
 		itemButtonPanel.add(itemButton);
 		kbGridPanel.add(itemButtonPanel);
 		currentItemKey = new JLabel(ck.getItemKeyName());
+		currentItemKey.setFont(Constants.H2);
 		kbGridPanel.add(currentItemKey);
 		itemButtonPanel.setMinimumSize(buttonPanelDimension);
 		itemButtonPanel.setMaximumSize(buttonPanelDimension);
@@ -197,10 +213,11 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		itemButton.setMaximumSize(Constants.BUTTON_RESOLUTION);
 		itemButton.setPreferredSize(Constants.BUTTON_RESOLUTION);
 
-		kBindingPanel.add(kbGridPanel, BorderLayout.SOUTH);
+		kBindingPanel.add(kbGridPanel, BorderLayout.NORTH);
 
 		// Placeholder
 		JPanel ph = new JPanel();
+		ph.setOpaque(false);
 		ph.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
 				Constants.RESOLUTION_HEIGHT - titleHeight));
 		ph.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
@@ -208,10 +225,18 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		ph.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
 				Constants.RESOLUTION_HEIGHT - titleHeight));
 
-		contentPanel.add(ph, BorderLayout.CENTER);
+		contentPanel.add(ph, BorderLayout.EAST);
 
 		// Adjust Volume
-		JPanel av = new JPanel(new GridLayout(4, 1));
+		JPanel av = new JPanel(new GridLayout(5, 1));
+		av.setOpaque(false);
+		JPanel emptyPanel3 = new JPanel();
+		JPanel emptyPanel4 = new JPanel();
+		JPanel emptyPanel5 = new JPanel();
+		emptyPanel3.setOpaque(false);
+		emptyPanel4.setOpaque(false);
+		emptyPanel5.setOpaque(false);
+		av.add(emptyPanel3);
 		av.setMinimumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
 				Constants.RESOLUTION_HEIGHT - titleHeight));
 		av.setMaximumSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
@@ -219,14 +244,13 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		av.setPreferredSize(new Dimension(Constants.RESOLUTION_WIDTH / 3,
 				Constants.RESOLUTION_HEIGHT - titleHeight));
 
-		contentPanel.add(av, BorderLayout.EAST);
+		contentPanel.add(av, BorderLayout.CENTER);
 
 		// Grid with the sound sliders
-		JLabel bgTitle = new JLabel("Background Music:");
-		av.add(bgTitle);
 
 		bgMusicSlider = new JSlider(JSlider.HORIZONTAL, 0, 100,
 				(int) (s.getBgVolume() * 100.0));
+		bgMusicSlider.setOpaque(false);
 		bgMusicSlider.addChangeListener(this);
 		bgMusicSlider.setMajorTickSpacing(25);
 		bgMusicSlider.setMinorTickSpacing(10);
@@ -235,11 +259,11 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 
 		av.add(bgMusicSlider);
 
-		JLabel sfxTitle = new JLabel("Soundeffects:");
-		av.add(sfxTitle);
+		av.add(emptyPanel5);
 
 		sfxSlider = new JSlider(JSlider.HORIZONTAL, 0, 100,
 				(int) (s.getSfxVolume() * 100.0));
+		sfxSlider.setOpaque(false);
 		sfxSlider.addChangeListener(this);
 		sfxSlider.setMajorTickSpacing(25);
 		sfxSlider.setMinorTickSpacing(10);
@@ -247,6 +271,7 @@ public class OptionView extends JPanelWithBackground implements ActionListener,
 		sfxSlider.setPaintLabels(true);
 
 		av.add(sfxSlider);
+		av.add(emptyPanel4);
 	}
 
 	@Override

@@ -26,24 +26,13 @@ public class OptionsIO {
 	private String settings_file_dir = "resources/"
 			+ Constants.SETTINGS_FILE_NAME;
 	File settingsFile = new File(settings_file_dir);
-	String sep = System.getProperty("line.separator");
 
 	/* Private constructor, so only one instance will be created. */
 	private OptionsIO() {
 		if (!settingsFile.exists()) {
 			try {
 				settingsFile.createNewFile();
-				BufferedWriter output = new BufferedWriter(new FileWriter(
-						settings_file_dir));
-				String defaultSettings = "///SETTINGS///" + sep + sep;
-				defaultSettings += "#KEYS" + sep + "Go_Left=37" + sep
-						+ "Go_Right=39" + sep + "Jump=38" + sep + "Use_Item=67"
-						+ sep + sep;
-				defaultSettings += "#SOUND" + sep + "BGM_Volume=0.57" + sep + "SFX_Volume=0.62" + sep + sep;
-				defaultSettings += "#MAPPACK" + sep + "Map=default";
-				output.write(defaultSettings);
-				output.flush();
-				output.close();
+				setDefaultSettings();
 			} catch (IOException e) {
 				System.out.println("IO Exception when creating the file.");
 			}
@@ -62,14 +51,47 @@ public class OptionsIO {
 	}
 
 	/**
-	 * Used to reload the file.
+	 * Is a method to write a default-Settings file.
+	 */
+	private void setDefaultSettings() {
+		String defaultSettings = "///SETTINGS///" + Constants.LINE_SEPARATOR
+				+ Constants.LINE_SEPARATOR;
+		defaultSettings += "#KEYS" + Constants.LINE_SEPARATOR + "Go_Left=37"
+				+ Constants.LINE_SEPARATOR + "Go_Right=39"
+				+ Constants.LINE_SEPARATOR + "Jump=38"
+				+ Constants.LINE_SEPARATOR + "Use_Item=67"
+				+ Constants.LINE_SEPARATOR + Constants.LINE_SEPARATOR;
+		defaultSettings += "#SOUND" + Constants.LINE_SEPARATOR
+				+ "BGM_Volume=0.57" + Constants.LINE_SEPARATOR
+				+ "SFX_Volume=0.62" + Constants.LINE_SEPARATOR
+				+ Constants.LINE_SEPARATOR;
+		defaultSettings += "#MAPPACK" + Constants.LINE_SEPARATOR
+				+ "Map=default";
+		try {
+			BufferedWriter output = new BufferedWriter(new FileWriter(
+					settings_file_dir));
+			output.write(defaultSettings);
+			output.flush();
+			output.close();
+		} catch (IOException e) {
+			System.out.println("Couldn't write to file");
+		}
+	}
+
+	/**
+	 * Method to replace data from a setting.
 	 * 
-	 * @throws IOException
+	 * @param attribute
+	 *            is the setting's name.
+	 * @param value
+	 *            is the value you want to change it to. It can be Integer,
+	 *            Double or String.
 	 */
 	private void replaceValue(String attribute, Object value) {
 		String newString = "";
 		String line;
 		String[] splitParams;
+		boolean paramExist = false;
 		try {
 			BufferedReader input = new BufferedReader(new FileReader(
 					settings_file_dir));
@@ -78,30 +100,46 @@ public class OptionsIO {
 				if (splitParams[0].equals(attribute)) {
 					if (value instanceof Integer) {
 						newString += splitParams[0] + "=" + (Integer) value
-								+ sep;
+								+ Constants.LINE_SEPARATOR;
 					} else if (value instanceof Double) {
 						newString += splitParams[0] + "=" + (Double) value
-								+ sep;
+								+ Constants.LINE_SEPARATOR;
 					} else {
 						newString += splitParams[0] + "=" + (String) value
-								+ sep;
+								+ Constants.LINE_SEPARATOR;
 					}
+					paramExist = true;
 
 				} else {
 					newString += line + "\n";
 				}
 			}
-			input.close();
-			BufferedWriter output = new BufferedWriter(new FileWriter(
-					settings_file_dir));
-			output.write(newString);
-			output.flush();
-			output.close();
+			if (!paramExist) {
+				setDefaultSettings();
+				replaceValue(attribute, value);
+			} else {
+				input.close();
+				BufferedWriter output = new BufferedWriter(new FileWriter(
+						settings_file_dir));
+				output.write(newString);
+				output.flush();
+				output.close();
+			}
 		} catch (IOException e) {
 			System.out.println("Couldn't read IO in replaceValue");
 		}
 	}
 
+	/**
+	 * Method to get data of a setting
+	 * 
+	 * @param attribute
+	 *            is the setting whose data you want to get
+	 * @param type
+	 *            is the type of return value by id. They exist in class
+	 *            Constants.
+	 * @return returns the value as an Object.
+	 */
 	private Object getValue(String attribute, int type) {
 		try {
 			BufferedReader input = new BufferedReader(new FileReader(
@@ -109,19 +147,26 @@ public class OptionsIO {
 			Object obj = "";
 			String line;
 			String[] params;
+			boolean paramExist = false;
 			while ((line = input.readLine()) != null) {
 				params = line.split("=", 2);
 				if (params[0].equals(attribute)) {
-					if(type == Constants.SETTINGS_INTEGER){
+					if (type == Constants.SETTINGS_INTEGER) {
 						obj = Integer.parseInt(params[1]);
-					} else if(type == Constants.SETTINGS_DOUBLE){
+					} else if (type == Constants.SETTINGS_DOUBLE) {
 						obj = Double.parseDouble(params[1]);
-					}else{
+					} else {
 						obj = params[1];
 					}
+					paramExist = true;
 				}
 			}
-			return obj;
+			if (!paramExist) {
+				setDefaultSettings();
+				getValue(attribute, type);
+			} else {
+				return obj;
+			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Take care of this later");
 		} catch (NumberFormatException e) {

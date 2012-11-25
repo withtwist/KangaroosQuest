@@ -37,11 +37,11 @@ public class ChangeView extends JFrame {
 
 	public ChangeView(GameModel gm) {
 		this.gm = gm;
-		ov = new OptionView("resources/gfx/misc/background.gif", this);
-		hv = new HighscoreView("resources/gfx/misc/background.gif", this);
-		mv = new MenuView("resources/gfx/misc/background.gif", this);
+		ov = new OptionView("resources/gfx/misc/option_bg.png", this);
+		hv = new HighscoreView("resources/gfx/misc/highscore_bg.png", this);
+		mv = new MenuView("resources/gfx/misc/menu_bg.png", this);
 		fv = new FinishedView(this);
-		shv = new ShowHighscoreView("resources/gfx/misc/background.gif", this, 0);
+		shv = new ShowHighscoreView("resources/gfx/misc/showhighscore_bg.png", this, 0);
 
 		jp = new JPanel(new CardLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,7 +146,7 @@ public class ChangeView extends JFrame {
 	}
 	
 	public void showHighscoreView(int level) {
-		shv = new ShowHighscoreView("resources/gfx/misc/background.gif", this, level);
+		shv = new ShowHighscoreView("resources/gfx/misc/showhighscore_bg.png", this, level);
 		CardLayout cl = (CardLayout) jp.getLayout();
 		jp.add(shv, "showhighscoreview");
 		cl.show(jp, "showhighscoreview");
