@@ -104,6 +104,11 @@ public class Highscore {
 		}
 
 	}
+	
+	public boolean willQualifyForHighscore(int level, int time){
+		int[] times = getTimes(level);
+		return times[nbrOfScores - 1] > time;
+	}
 
 	/**
 	 * Returns a string array consisting of the player names in order. If the

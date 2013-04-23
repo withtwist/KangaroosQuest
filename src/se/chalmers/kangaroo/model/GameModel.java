@@ -256,7 +256,7 @@ public class GameModel {
 		kangaroo.reset();
 		gameMap.resetItems();
 		gameMap.resetCreatures();
-		kangaroo.setPosition(new Position(10, 186));
+		kangaroo.setPosition(new Position(Constants.POS_KANGAROO_START.width, Constants.POS_KANGAROO_START.height));
 	}
 
 	/* When one level is finished this method should be invoked. */

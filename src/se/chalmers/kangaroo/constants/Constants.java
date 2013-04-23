@@ -78,4 +78,10 @@ public class Constants {
 	public static final int SETTINGS_STRING = 2;
 	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
+	/*
+	 * Game data constants
+	 */
+	public static final Dimension POS_KANGAROO_START = new Dimension(7000, 186);
+	public static final Dimension POS_CLOCK = new Dimension(10, 20);
+	public static final Dimension POS_DEATH = new Dimension(70, 20);
 }

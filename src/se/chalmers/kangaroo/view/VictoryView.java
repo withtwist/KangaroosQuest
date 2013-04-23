@@ -28,6 +28,7 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 	private int level;
 	private int deathcount;
 	private GameSound s;
+	private boolean isQualifiedForHighscore;
 
 	public VictoryView(String imagepath, int deathcount, double time,
 			GameView gv, int level) {
@@ -36,10 +37,12 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 		this.level = level;
 		this.deathcount = deathcount;
 		this.s = GameSound.getInstance();
+		Highscore h = Highscore.getInstance();
+		isQualifiedForHighscore = h.willQualifyForHighscore(this.level, this.time);
 		int with = 130;
 		int height = 40;
 		Font stats = new Font("Verdana", Font.BOLD, 20);
-		Font submitFont = new Font("Verdana", Font.PLAIN, 28);
+		Font submitFont = new Font("Verdana", Font.PLAIN, 20);
 		JLabel timeLabel = new JLabel("Time: " + time);
 		timeLabel.setFont(stats);
 		timeLabel.setForeground(Color.red);
@@ -50,7 +53,7 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 		this.gameview = gv;
 		nextlevel = new Menubutton("resources/gfx/buttons/nextlevel.png");
 		submit = new Menubutton("resources/gfx/buttons/submit.png");
-		namefield = new JTextField();
+		namefield = new JTextField("Kangaroo");
 		namefield.setSize(with, height);
 		namefield.setMinimumSize(new Dimension(with, height));
 		namefield.setMaximumSize(new Dimension(with, height));
@@ -81,8 +84,11 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 						AlphaComposite.SRC_OVER, 1.0f)); // turn on opacity
 			}
 		};
-		jp2.add(namefield);
-		jp2.add(submit);
+		if(isQualifiedForHighscore){
+			jp2.add(namefield);
+			jp2.add(submit);
+			submit.addMouseListener(this);
+		}
 
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
@@ -99,7 +105,10 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(jp2);
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
-		this.add(nextlevel);
+		if(!isQualifiedForHighscore){
+			this.add(nextlevel);
+			nextlevel.addMouseListener(this);
+		}
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
@@ -107,8 +116,6 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(new Menubutton("resources/gfx/misc/stretchbar.png"));
-		nextlevel.addMouseListener(this);
-		submit.addMouseListener(this);
 	}
 
 	@Override
@@ -155,6 +162,9 @@ public class VictoryView extends JPanelWithBackground implements MouseListener {
 		s.playBgMusic("level_" + (level+2));
 			try {
 				name = removeSpaces(namefield.getText());
+				if(name.equals("")){
+					name = "Kangaroo";
+				}
 				Highscore h = Highscore.getInstance();
 				h.setHighscore(name, level, time, deathcount);
 			} catch (NullPointerException exc) {

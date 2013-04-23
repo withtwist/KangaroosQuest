@@ -1,5 +1,6 @@
 package se.chalmers.kangaroo.view;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.beans.PropertyChangeSupport;
@@ -78,8 +79,6 @@ public class GameView extends JPanelWithBackground {
 				|| drawFrom == gm.getGameMap().getTileWidth() - 33 ? 0 : p
 				.getX() % 32;
 
-		g.drawString("" + gm.getTime(), 10, 10);
-		g.drawString("Deaths: " + gm.getDeathCount(), 100, 10);
 		// paintIcon(null, g
 		/* Render the tiles */
 		for (int y = 0; y < gm.getGameMap().getTileHeight(); y++)
@@ -160,6 +159,12 @@ public class GameView extends JPanelWithBackground {
 		} else {
 			ka.drawSprite(g, p.getX() - drawFrom * 32 - fixPosition, p.getY());
 		}
+		g.setColor(Color.WHITE);
+		g.drawString("" + gm.getTime(), Constants.POS_CLOCK.width+1, Constants.POS_CLOCK.height+1);
+		g.drawString("Deaths: " + gm.getDeathCount(), Constants.POS_DEATH.width+1, Constants.POS_DEATH.height+1);
+		g.setColor(Color.BLACK);
+		g.drawString("" + gm.getTime(), Constants.POS_CLOCK.width, Constants.POS_CLOCK.height);
+		g.drawString("Deaths: " + gm.getDeathCount(), Constants.POS_DEATH.width, Constants.POS_DEATH.height);
 	}
 
 	/* Private method for calculate the left side to render */
