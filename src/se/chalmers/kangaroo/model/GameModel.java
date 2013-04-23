@@ -53,7 +53,7 @@ public class GameModel {
 		super();
 		levelFinished = false;
 		gameFinished = false;
-		currentLevel = 0;
+		currentLevel = 1;
 		gameMap = new GameMap("resources/maps/level"+currentLevel+".tmx");
 		kangaroo = new Kangaroo(new Position(10, 100));
 		s = GameSound.getInstance();

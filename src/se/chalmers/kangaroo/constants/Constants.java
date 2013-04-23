@@ -23,7 +23,7 @@ public class Constants {
 	 */
 
 	public static final int TILE_INVISIBLE = 42;
-	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 31 33 34 ";
+	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 21 22 23 24 25 31 33 34 ";
 	public static final String ITEM_IDS = " 51 52 53 54 ";
 	public static final String CREATURE_IDS = " 111 112 113 114 115 116 ";
 	public static final String IOBJECTS_IDS = " 71 72 73 74 ";
@@ -32,7 +32,7 @@ public class Constants {
 	public static final String INTERACTIVE_TILES = " 91 92 93 94 95 96 ";
 	public static final String INTERACTIVE_TILES_REDBLUE = " 91 92 93 94 ";
 	public static final String INTERACTIVE_TILES_ONOFF = " 95 96 ";
-	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 181 182 183 184 185 186 187 188 ";
+	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 181 182 183 184 185 186 187 188 ";
 	public static final String ANIMATED_TILES = " 76 77 ";
 	
 	/*
@@ -81,7 +81,7 @@ public class Constants {
 	/*
 	 * Game data constants
 	 */
-	public static final Dimension POS_KANGAROO_START = new Dimension(7000, 186);
+	public static final Dimension POS_KANGAROO_START = new Dimension(10, 186);
 	public static final Dimension POS_CLOCK = new Dimension(10, 20);
 	public static final Dimension POS_DEATH = new Dimension(70, 20);
 }
