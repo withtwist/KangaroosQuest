@@ -161,6 +161,7 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		}
 		if (e.getSource() == exitGame) {
 			exitGame.setIcon(new ImageIcon("resources/gfx/buttons/exitGame.png"));
+			s.playBgMusic("empty");
 			System.exit(0);
 		}
 	}
