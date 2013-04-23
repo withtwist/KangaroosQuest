@@ -1,5 +1,7 @@
 package se.chalmers.kangaroo.model;
 
+import java.util.Arrays;
+
 import se.chalmers.kangaroo.constants.Constants;
 
 /**
@@ -28,6 +30,8 @@ public class TileFactory {
 	public Tile createTile(int i, int x, int y) {
 		if (Constants.INTERACTIVE_TILES.contains(" " + i + " ")) {
 			return new InteractiveTile(i, x, y);
+		} else if(Constants.ANIMATED_TILES.contains(" " + i + " ")){
+			return new AnimatedTile(i, x, y);
 		} else if (Constants.ITEM_IDS.contains(" " + i + " ")
 				|| Constants.IOBJECTS_IDS_REDBLUE.contains(" " + i + " ")
 				|| Constants.CREATURE_IDS.contains(" " + i + " ")) {
