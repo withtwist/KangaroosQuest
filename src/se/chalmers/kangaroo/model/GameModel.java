@@ -4,6 +4,7 @@ import java.awt.geom.Rectangle2D;
 
 import se.chalmers.kangaroo.constants.Constants;
 import se.chalmers.kangaroo.model.creatures.Creature;
+import se.chalmers.kangaroo.model.creatures.FishCreature;
 import se.chalmers.kangaroo.model.kangaroo.Item;
 import se.chalmers.kangaroo.model.kangaroo.Kangaroo;
 import se.chalmers.kangaroo.model.utils.Direction;
@@ -53,7 +54,7 @@ public class GameModel {
 		super();
 		levelFinished = false;
 		gameFinished = false;
-		currentLevel = 1;
+		currentLevel = Constants.START_LEVEL;
 		gameMap = new GameMap("resources/maps/level"+currentLevel+".tmx");
 		kangaroo = new Kangaroo(new Position(10, 100));
 		s = GameSound.getInstance();
@@ -84,6 +85,12 @@ public class GameModel {
 	private void updateCreatures() {
 		for (int i = 0; i < gameMap.getCreatureSize(); i++) {
 			Creature c = gameMap.getCreatureAt(i);
+			if(c.getId() == 114){
+				FishCreature f = (FishCreature) c;
+				if(f.isOutOfBounds()){
+					gameMap.killCreature(c);
+				}
+			}
 			Rectangle2D cRect = c.getPolygon().getBounds2D();
 			//Checks if the objects to the left makes the creature to turn
 			if (( !(gameMap.getTile((int) (cRect.getMinX() / 32),

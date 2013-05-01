@@ -146,4 +146,8 @@ public class BullCreature implements Creature {
 	public Direction getDirection(){
 		return currentDir;
 	}
+	
+	public void resetPosition(){
+		//TODO
+	}
 }

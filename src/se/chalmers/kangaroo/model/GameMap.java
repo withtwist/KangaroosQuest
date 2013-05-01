@@ -168,8 +168,11 @@ public class GameMap {
 	 */
 	public void resetCreatures() {
 		creatures.clear();
-		for (Creature c : sCreatures)
+		for (int i = 0; i < sCreatures.length; i++){
+			Creature c = sCreatures[i];
+			c.resetPosition();
 			creatures.add(c);
+		}
 	}
 
 	/**

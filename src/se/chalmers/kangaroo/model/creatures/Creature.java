@@ -66,5 +66,10 @@ public interface Creature{
 	 * @return the current direction
 	 */
 	public Direction getDirection();
+	
+	/**
+	 * Reset the creatures position to its start position.
+	 */
+	public void resetPosition();
 
 }

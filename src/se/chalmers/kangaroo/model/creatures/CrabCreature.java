@@ -14,10 +14,12 @@ import se.chalmers.kangaroo.model.utils.Position;
 public class CrabCreature implements Creature {
 	private static final int id = 111;
 	private Position pos;
+	private Position startPos;
 	private Direction direction;
 	private int speed = 1;
 
 	public CrabCreature(Position pos) {
+		startPos = pos;
 		this.pos = pos;
 		direction = Direction.DIRECTION_WEST;
 	}
@@ -80,5 +82,9 @@ public class CrabCreature implements Creature {
 	
 	public Direction getDirection(){
 		return this.direction;
+	}
+	
+	public void resetPosition(){
+		pos = startPos;
 	}
 }

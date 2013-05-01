@@ -21,8 +21,8 @@ public class AnimationFactory {
 			return new TurtleAnimation(c);
 		case 113:
 			return new BlackAndWhiteAnimation(c);
-//		case 114: activate when bullcreature is complete.
-//			return new BullAnimation(c);
+		case 114:
+			return new FishAnimation();
 		case 115:
 			return new SumoAnimation(c);
 		case 116:

@@ -17,6 +17,7 @@ import se.chalmers.kangaroo.model.utils.Position;
 public class SumoCreature implements Creature {
 	private final static int id = 115;
 	private Position pos;
+	private Position startPos;
 	private boolean isStomping = false;
 	private boolean isJumping = false;
 	private boolean isShaking = false;
@@ -25,7 +26,7 @@ public class SumoCreature implements Creature {
 
 
 	public SumoCreature(Position pos) {
-
+		startPos = pos;
 		this.pos = pos;
 		direction = Direction.DIRECTION_WEST;
 	}
@@ -149,6 +150,10 @@ public class SumoCreature implements Creature {
 		}else{
 			direction = Direction.DIRECTION_WEST;
 		}
+	}
+	
+	public void resetPosition(){
+		pos = startPos;
 	}
 
 }

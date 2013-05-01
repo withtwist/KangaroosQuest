@@ -25,7 +25,7 @@ public class CreatureFactory {
 		case 113:
 			return new BlackAndWhiteCreature(p);
 		case 114:
-			return new BullCreature(p);
+			return new FishCreature(p);
 		case 115:
 			return new SumoCreature(p);
 		case 116:

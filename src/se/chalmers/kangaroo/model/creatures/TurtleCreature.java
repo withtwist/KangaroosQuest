@@ -16,11 +16,13 @@ public class TurtleCreature implements Creature {
 
 	private static final int id = 112;
 	private Position currentPos;
+	private Position startPos;
 	private Direction currentDir;
 	private int speed = 1;
 	private boolean inShell = false;
 
 	public TurtleCreature(Position spawnPos) {
+		startPos = spawnPos;
 		currentPos = spawnPos;
 		currentDir = Direction.DIRECTION_WEST;
 	}
@@ -121,6 +123,10 @@ public class TurtleCreature implements Creature {
 	 */
 	public Direction getDirection() {
 		return currentDir;
+	}
+	
+	public void resetPosition(){
+		currentPos = startPos;
 	}
 
 }

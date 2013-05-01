@@ -13,6 +13,7 @@ import se.chalmers.kangaroo.model.utils.Position;
 public class SmurfCreature implements Creature {
 
 	private Position currentPos;
+	private Position startPos;
 
 	private Direction currentDir;
 
@@ -23,6 +24,7 @@ public class SmurfCreature implements Creature {
 	 */
 	public SmurfCreature(Position spawnPos) {
 		this.currentDir = Direction.DIRECTION_EAST;
+		startPos = spawnPos;
 		currentPos = spawnPos;
 	}
 	
@@ -84,6 +86,10 @@ public class SmurfCreature implements Creature {
 	 */
 	public Direction getDirection() {
 		return currentDir;
+	}
+	
+	public void resetPosition(){
+		currentPos = startPos;
 	}
 
 }

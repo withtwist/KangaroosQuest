@@ -13,6 +13,7 @@ import se.chalmers.kangaroo.model.utils.Position;
  */
 public class BlackAndWhiteCreature implements Creature {
 	private Position pos;
+	private Position startPos;
 	private final static int ID = 113;
 	private static final int speed = 7;
 	private Direction direction;
@@ -24,6 +25,7 @@ public class BlackAndWhiteCreature implements Creature {
 	 * @param spawnPos
 	 */
 	public BlackAndWhiteCreature(Position spawnPos) {
+		startPos = spawnPos;
 		this.pos = spawnPos;
 		this.direction = Direction.DIRECTION_WEST;
 		this.killable = false;
@@ -114,5 +116,9 @@ public class BlackAndWhiteCreature implements Creature {
 	@Override
 	public Direction getDirection(){
 		return direction;
+	}
+	
+	public void resetPosition(){
+		pos = startPos;
 	}
 }
