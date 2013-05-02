@@ -27,6 +27,8 @@ public class AnimationFactory {
 			return new SumoAnimation(c);
 		case 116:
 			return new SmurfAnimation(c);
+		case 117:
+			return new HorseAnimation();
 		default:
 			return null;
 		
