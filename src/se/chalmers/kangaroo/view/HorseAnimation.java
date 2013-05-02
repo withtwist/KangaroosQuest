@@ -19,9 +19,9 @@ public class HorseAnimation implements Animation{
 	public HorseAnimation(){
 		tick = 0;
 		currentSprite = 0;
-		this.sheet = Toolkit.getDefaultToolkit().getImage("resources/gfx/sheets/dalahorse_64x64.png");
-		this.width = 64;
-		this.height = 64;
+		this.sheet = Toolkit.getDefaultToolkit().getImage("resources/gfx/sheets/dalahorse_96x96.png");
+		this.width = 96;
+		this.height = 96;
 	}
 	@Override
 	public void drawSprite(Graphics g, int x, int y) {
@@ -30,7 +30,7 @@ public class HorseAnimation implements Animation{
 			currentSprite++;
 			currentSprite = currentSprite % 2;
 		}
-		g.drawImage(sheet, x, y, x+width, y+height, currentSprite*64, 0, currentSprite*64+width, height, null, null);
+		g.drawImage(sheet, x, y, x+width, y+height, currentSprite*96, 0, currentSprite*96+width, height, null, null);
 		tick++;
 	}
 	

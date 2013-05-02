@@ -32,9 +32,9 @@ public class HorseCreature implements Creature {
 
 	@Override
 	public Polygon getPolygon() {
-		int polyX[] = { pos.getX() + 0, pos.getX() + 64, pos.getX() + 64, pos.getX() + 0 };
+		int polyX[] = { pos.getX() + 0, pos.getX() + 96, pos.getX() + 96, pos.getX() + 0 };
 		
-		int polyY[] = { pos.getY() + 0, pos.getY() + 0, pos.getY() + 64, pos.getY() + 64 };
+		int polyY[] = { pos.getY() + 0, pos.getY() + 0, pos.getY() + 96, pos.getY() + 96 };
 		return new Polygon(polyX, polyY, 4);
 	}
 
