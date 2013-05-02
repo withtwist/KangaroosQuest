@@ -81,7 +81,7 @@ public class Constants {
 	/*
 	 * Game data constants
 	 */
-	public static final int START_LEVEL = 3;
+	public static final int START_LEVEL = 0;
 	public static final Dimension POS_KANGAROO_START = new Dimension(10, 186);
 	public static final Dimension POS_CLOCK = new Dimension(10, 20);
 	public static final Dimension POS_DEATH = new Dimension(70, 20);

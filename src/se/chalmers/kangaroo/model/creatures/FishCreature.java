@@ -80,5 +80,6 @@ public class FishCreature implements Creature {
 	
 	public void resetPosition(){
 		pos = startPos;
+		isOutOfBounds = false;
 	}
 }
