@@ -32,10 +32,13 @@ public class HorseCreature implements Creature {
 
 	@Override
 	public Polygon getPolygon() {
-		int polyX[] = { pos.getX() + 0, pos.getX() + 96, pos.getX() + 96, pos.getX() + 0 };
-		
-		int polyY[] = { pos.getY() + 0, pos.getY() + 0, pos.getY() + 96, pos.getY() + 96 };
+		int polyX[] = { pos.getX() + 0, pos.getX() + 51, pos.getX() + 51, pos.getX() + 96, pos.getX() + 96,
+				pos.getX() + 0 };
+
+		int polyY[] = { pos.getY() + 0, pos.getY() + 0, pos.getY() + 30, pos.getY() + 30, pos.getY() + 96,
+				pos.getY() + 96 };
 		return new Polygon(polyX, polyY, 4);
+
 	}
 
 	@Override
@@ -43,21 +46,17 @@ public class HorseCreature implements Creature {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public boolean isOutOfBounds(){
+
+	public boolean isOutOfBounds() {
 		return isOutOfBounds;
 	}
 
 	@Override
 	public void updateCreature() {
-		if(pos.getX() <= 2){
+		if (pos.getX() <= 2) {
 			isOutOfBounds = true;
-		}else{
-			if (direction == Direction.DIRECTION_WEST) {
-				pos = new Position(pos.getX() - speed, pos.getY());
-			} else {
-				pos = new Position(pos.getX() + speed, pos.getY());
-			}
+		} else {
+			pos = new Position(pos.getX() - speed, pos.getY());
 		}
 	}
 
@@ -72,13 +71,14 @@ public class HorseCreature implements Creature {
 	}
 
 	@Override
-	public void changeDirection() {}
-	
-	public Direction getDirection(){
-		return this.direction;
+	public void changeDirection() {
 	}
-	
-	public void resetPosition(){
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void resetPosition() {
 		pos = startPos;
 		isOutOfBounds = false;
 	}

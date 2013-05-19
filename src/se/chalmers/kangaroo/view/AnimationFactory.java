@@ -29,6 +29,8 @@ public class AnimationFactory {
 			return new SmurfAnimation(c);
 		case 117:
 			return new HorseAnimation();
+		case 118:
+			return new MatryoshkaAnimation(c);
 		default:
 			return null;
 		

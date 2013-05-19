@@ -32,6 +32,8 @@ public class CreatureFactory {
 			return new SmurfCreature(p);
 		case 117:
 			return new HorseCreature(p);
+		case 118:
+			return new MatryoshkaCreature(p);
 		default:
 			return null;
 		}

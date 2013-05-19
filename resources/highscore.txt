@@ -5,11 +5,11 @@ SP 33620 0 GRUIJ 40050 0 hej 46450 0 Sean 48010 2 Sean 48680 1 geg 56110 3 Sean 
 level2
 Sean 87820 5 Kangaroo 112140 0 Kangaroo 115600 2 SP 159790 3 Sean 190900 4 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level3
-Kangaroo 176040 19 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Kangaroo 119040 7 Kangaroo 169740 7 Kangaroo 176040 19 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level4
-Grubla 12600 0 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Grubla 12600 0 Kangaroo 76810 13 Kangaroo 283790 42 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level5
-Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+Kangaroo 70160 1 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level6
 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
 level7

@@ -1,10 +1,12 @@
-	package se.chalmers.kangaroo.model;
+package se.chalmers.kangaroo.model;
 
 import java.awt.geom.Rectangle2D;
 
 import se.chalmers.kangaroo.constants.Constants;
 import se.chalmers.kangaroo.model.creatures.Creature;
 import se.chalmers.kangaroo.model.creatures.FishCreature;
+import se.chalmers.kangaroo.model.creatures.HorseCreature;
+import se.chalmers.kangaroo.model.creatures.MatryoshkaCreature;
 import se.chalmers.kangaroo.model.kangaroo.Item;
 import se.chalmers.kangaroo.model.kangaroo.Kangaroo;
 import se.chalmers.kangaroo.model.utils.Direction;
@@ -55,7 +57,7 @@ public class GameModel {
 		levelFinished = false;
 		gameFinished = false;
 		currentLevel = Constants.START_LEVEL;
-		gameMap = new GameMap("resources/maps/level"+currentLevel+".tmx");
+		gameMap = new GameMap("resources/maps/level" + currentLevel + ".tmx");
 		kangaroo = new Kangaroo(new Position(10, 100));
 		s = GameSound.getInstance();
 	}
@@ -85,29 +87,34 @@ public class GameModel {
 	private void updateCreatures() {
 		for (int i = 0; i < gameMap.getCreatureSize(); i++) {
 			Creature c = gameMap.getCreatureAt(i);
-			if(c.getId() == 114){
+			if (c.getId() == 114) {
 				FishCreature f = (FishCreature) c;
-				if(f.isOutOfBounds()){
+				if (f.isOutOfBounds()) {
+					gameMap.killCreature(c);
+				}
+			} else if (c.getId() == 117) {
+				HorseCreature h = (HorseCreature) c;
+				if (h.isOutOfBounds()) {
 					gameMap.killCreature(c);
 				}
 			}
 			Rectangle2D cRect = c.getPolygon().getBounds2D();
-			//Checks if the objects to the left makes the creature to turn
-			if (( !(gameMap.getTile((int) (cRect.getMinX() / 32),
+			// Checks if the objects to the left makes the creature to turn
+			if ((!(gameMap.getTile((int) (cRect.getMinX() / 32),
 					(int) (cRect.getMinY() / 32) + 1).isCollidable()) || (gameMap
 					.getTile((int) (cRect.getMinX() / 32),
-							(int) (cRect.getMinY() / 32))).isCollidable() )
-					&& c.getDirection() == Direction.DIRECTION_WEST){
+							(int) (cRect.getMinY() / 32))).isCollidable())
+					&& c.getDirection() == Direction.DIRECTION_WEST) {
 				c.changeDirection();
 			}
-			//Checks if the objects to the right makes the creature to turn
-				if ((!(gameMap.getTile((int) (cRect.getMaxX() / 32),
-						(int) (cRect.getMinY() / 32) + 1).isCollidable()) || (gameMap
-						.getTile((int) (cRect.getMaxX() / 32),
-								(int) (cRect.getMinY() / 32)).isCollidable()))
-						&& c.getDirection() == Direction.DIRECTION_EAST) {
-					c.changeDirection();
-				}
+			// Checks if the objects to the right makes the creature to turn
+			if ((!(gameMap.getTile((int) (cRect.getMaxX() / 32),
+					(int) (cRect.getMinY() / 32) + 1).isCollidable()) || (gameMap
+					.getTile((int) (cRect.getMaxX() / 32),
+							(int) (cRect.getMinY() / 32)).isCollidable()))
+					&& c.getDirection() == Direction.DIRECTION_EAST) {
+				c.changeDirection();
+			}
 			c.updateCreature();
 
 		}
@@ -148,14 +155,28 @@ public class GameModel {
 	private void creatureCollition() {
 		for (int i = 0; i < gameMap.getCreatureSize(); i++) {
 			Creature creature = gameMap.getCreatureAt(i);
+			boolean killCreature = true;
 			if (kangaroo.getPolygon().getBounds2D()
 					.intersects(creature.getPolygon().getBounds2D())) {
 				if (creature.isKillable() && kangaroo.getVerticalSpeed() > 0) {
-					s.playSfx("creaturedeath");
-					gameMap.killCreature(creature);
-					kangaroo.setVerticalSpeed(-6.5f);
-					kangaroo.setPosition(new Position(kangaroo.getPosition()
-							.getX(), kangaroo.getPosition().getY() - 5));
+					if (creature.getId() == 118) {
+						MatryoshkaCreature mc = (MatryoshkaCreature) creature;
+						killCreature = !mc.decreaseLife();
+					}
+					if (killCreature) {
+						s.playSfx("creaturedeath");
+						gameMap.killCreature(creature);
+						kangaroo.setVerticalSpeed(-6.5f);
+						kangaroo.setPosition(new Position(kangaroo
+								.getPosition().getX(), kangaroo.getPosition()
+								.getY() - 5));
+					}else{
+						s.playSfx("creaturedeath");
+						kangaroo.setVerticalSpeed(-6.5f);
+						kangaroo.setPosition(new Position(kangaroo
+								.getPosition().getX(), kangaroo.getPosition()
+								.getY() - 5));
+					}
 				} else {
 					s.playSfx("death");
 					restartLevel();
@@ -263,18 +284,18 @@ public class GameModel {
 		kangaroo.reset();
 		gameMap.resetItems();
 		gameMap.resetCreatures();
-		kangaroo.setPosition(new Position(Constants.POS_KANGAROO_START.width, Constants.POS_KANGAROO_START.height));
+		kangaroo.setPosition(new Position(Constants.POS_KANGAROO_START.width,
+				Constants.POS_KANGAROO_START.height));
 	}
 
 	/* When one level is finished this method should be invoked. */
 	private void changeLevel() {
 		// setHighScore(currentLevel, time);
 		levelFinished = true;
-		
-		
+
 		s.playBgMusic("empty");
 		s.playSfx("victory");
-		
+
 		if (currentLevel == Constants.NUMBER_OF_LEVELS)
 			gameFinished = true;
 		// end of tmp
@@ -347,12 +368,13 @@ public class GameModel {
 	public double getTime() {
 		return timer.getElapsedTime();
 	}
-	
+
 	/**
-	 * The level that is running or was just finished. 
+	 * The level that is running or was just finished.
+	 * 
 	 * @return the current level
 	 */
-	public int getLevel(){
+	public int getLevel() {
 		return currentLevel;
 	}
 }
