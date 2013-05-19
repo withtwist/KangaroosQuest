@@ -14,12 +14,14 @@ public class MatryoshkaCreature implements Creature {
 	private double horizontalSpeed;
 	private int lifesLeft;
 	private Direction direction;
+	private boolean fuckYouModel;
 
 	public MatryoshkaCreature(Position pos) {
 		startPos = pos;
 		this.pos = pos;
 		direction = Direction.DIRECTION_WEST;
 		lifesLeft = 2;
+		this.fuckYouModel = false;
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class MatryoshkaCreature implements Creature {
 			int polyX[] = { pos.getX() + 0, pos.getX() + 32, pos.getX() + 32,
 					pos.getX() + 0 };
 			int polyY[] = { pos.getY() + 64, pos.getY() + 64, pos.getY() + 96,
-					pos.getY() + 96 };
+					pos.getY() + 96};
 			return new Polygon(polyX, polyY, 4);
 		}
 	}
@@ -53,7 +55,6 @@ public class MatryoshkaCreature implements Creature {
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -80,7 +81,9 @@ public class MatryoshkaCreature implements Creature {
 		int tmp = (int) (Math.random() * 600);
 		if (tmp >= 580 && !isJumping) {
 			if((Math.random()*4) >= 3){
+				fuckYouModel = true;
 				changeDirection();
+				fuckYouModel = false;
 			}
 			isJumping = true;
 			verticalSpeed = -4;
@@ -99,13 +102,11 @@ public class MatryoshkaCreature implements Creature {
 	private void jump() {
 		if (Math.abs(verticalSpeed - 4) > 10e-10) {
 			if(getDirection() == Direction.DIRECTION_WEST){
-				pos = new Position(pos.getX() + (int) (horizontalSpeed + 0.5),
+				pos = new Position(pos.getX() + (int) (horizontalSpeed),
 						(int) (pos.getY() + verticalSpeed + 0.5));
-				System.out.println(horizontalSpeed);
 			}else{
-				pos = new Position(pos.getX() + (int) (horizontalSpeed + 0.5),
+				pos = new Position(pos.getX() + (int) (horizontalSpeed),
 						(int) (pos.getY() + verticalSpeed + 0.5));
-				System.out.println(horizontalSpeed);
 			}
 			verticalSpeed += 0.1;
 		} else {
@@ -125,12 +126,13 @@ public class MatryoshkaCreature implements Creature {
 
 	@Override
 	public void changeDirection() {
-		if (direction == Direction.DIRECTION_WEST) {
-			direction = Direction.DIRECTION_EAST;
-		} else {
-			direction = Direction.DIRECTION_WEST;
+		if(fuckYouModel){
+			if (this.direction == Direction.DIRECTION_WEST) {
+				this.direction = Direction.DIRECTION_EAST;
+			} else {
+				this.direction = Direction.DIRECTION_WEST;
+			}
 		}
-
 	}
 
 	@Override
