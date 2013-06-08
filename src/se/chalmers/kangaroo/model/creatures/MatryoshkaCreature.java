@@ -113,6 +113,34 @@ public class MatryoshkaCreature implements Creature {
 			isJumping = false;
 		}
 	}
+	
+	/**
+	 * Set the horizontal speed to 0.
+	 */
+	public void resetHorizontalSpeed(){
+		horizontalSpeed = 0;
+	}
+	
+	/**
+	 * Getting the initial start position
+	 * @return the position as a Position
+	 */
+	public Position getStartPos(){
+		return startPos;
+	}
+	
+	public int getEastLength(){
+		switch (lifesLeft){
+		case 2:
+			return 64;
+		case 1:
+			return 44;
+		case 0:
+			return 32;
+		default:
+			return 64;
+		}
+	}
 
 	@Override
 	public int getId() {

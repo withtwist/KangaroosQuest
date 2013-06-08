@@ -98,6 +98,21 @@ public class GameModel {
 					gameMap.killCreature(c);
 				}
 			}
+			// Check if Matryoshka creature can jump further
+			if(c.getId() == 118){
+				MatryoshkaCreature mc = (MatryoshkaCreature) c;
+				if(mc.getDirection() == Direction.DIRECTION_WEST){
+					if(!(gameMap.getTile((mc.getPosition().getX()-1)/32, (mc.getStartPos().getY()+97)/32).isCollidable())){
+						mc.resetHorizontalSpeed();
+						System.out.println("True");
+					}
+				}else{
+					if(!(gameMap.getTile((mc.getPosition().getX()+mc.getEastLength()+1)/32, (mc.getStartPos().getY()+97)/32).isCollidable())){
+						mc.resetHorizontalSpeed();
+						System.out.println("True");
+					}
+				}
+			}
 			Rectangle2D cRect = c.getPolygon().getBounds2D();
 			// Checks if the objects to the left makes the creature to turn
 			if ((!(gameMap.getTile((int) (cRect.getMinX() / 32),
