@@ -103,13 +103,11 @@ public class GameModel {
 				MatryoshkaCreature mc = (MatryoshkaCreature) c;
 				if(mc.getDirection() == Direction.DIRECTION_WEST){
 					if(!(gameMap.getTile((mc.getPosition().getX()-1)/32, (mc.getStartPos().getY()+97)/32).isCollidable())){
-						mc.resetHorizontalSpeed();
-						System.out.println("True");
+						mc.atEdge();
 					}
 				}else{
 					if(!(gameMap.getTile((mc.getPosition().getX()+mc.getEastLength()+1)/32, (mc.getStartPos().getY()+97)/32).isCollidable())){
-						mc.resetHorizontalSpeed();
-						System.out.println("True");
+						mc.atEdge();
 					}
 				}
 			}

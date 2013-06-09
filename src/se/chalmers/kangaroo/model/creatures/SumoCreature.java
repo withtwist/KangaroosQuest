@@ -154,6 +154,8 @@ public class SumoCreature implements Creature {
 	
 	public void resetPosition(){
 		pos = startPos;
+		verticalSpeed = 0;
+		isJumping = false;
 	}
 
 }

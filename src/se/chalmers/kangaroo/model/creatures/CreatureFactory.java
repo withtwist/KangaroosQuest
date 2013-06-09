@@ -34,6 +34,8 @@ public class CreatureFactory {
 			return new HorseCreature(p);
 		case 118:
 			return new MatryoshkaCreature(p);
+		case 119:
+			return new IceCrabCreature(p);
 		default:
 			return null;
 		}

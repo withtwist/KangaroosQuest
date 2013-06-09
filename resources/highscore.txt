@@ -9,8 +9,8 @@ Kangaroo 119040 7 Kangaroo 169740 7 Kangaroo 176040 19 Kangaroo 999999 999 Kanga
 level4
 Grubla 12600 0 Kangaroo 76810 13 Kangaroo 283790 42 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level5
-Kangaroo 70160 1 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Kangaroo 70160 1 Kangaroo 254290 14 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level6
-Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999
+Kangaroo 45060 0 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level7
 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999

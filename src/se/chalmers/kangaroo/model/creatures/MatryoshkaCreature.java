@@ -1,7 +1,7 @@
 package se.chalmers.kangaroo.model.creatures;
 
 import java.awt.Polygon;
-
+import se.chalmers.kangaroo.constants.Constants;
 import se.chalmers.kangaroo.model.utils.Direction;
 import se.chalmers.kangaroo.model.utils.Position;
 
@@ -117,8 +117,11 @@ public class MatryoshkaCreature implements Creature {
 	/**
 	 * Set the horizontal speed to 0.
 	 */
-	public void resetHorizontalSpeed(){
+	public void atEdge(){
 		horizontalSpeed = 0;
+		fuckYouModel = true;
+		changeDirection();
+		fuckYouModel = false;
 	}
 	
 	/**
@@ -132,13 +135,13 @@ public class MatryoshkaCreature implements Creature {
 	public int getEastLength(){
 		switch (lifesLeft){
 		case 2:
-			return 64;
+			return Constants.MATRYOSHKA_L.width;
 		case 1:
-			return 44;
+			return Constants.MATRYOSHKA_M.width;
 		case 0:
-			return 32;
+			return Constants.MATRYOSHKA_S.width;
 		default:
-			return 64;
+			return Constants.MATRYOSHKA_L.width;
 		}
 	}
 

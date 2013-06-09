@@ -25,15 +25,22 @@ public class Constants {
 	public static final int TILE_INVISIBLE = 42;
 	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 21 22 23 24 25 26 27 28 31 33 34 ";
 	public static final String ITEM_IDS = " 51 52 53 54 ";
-	public static final String CREATURE_IDS = " 111 112 113 114 115 116 117 118 ";
+	public static final String CREATURE_IDS = " 111 112 113 114 115 116 117 118 119 ";
 	public static final String IOBJECTS_IDS = " 71 72 73 74 ";
 	public static final String IOBJECTS_IDS_REDBLUE = " 71 72 ";
 	public static final String IOBJECTS_IDS_ONOFF = " 73 74 ";
 	public static final String INTERACTIVE_TILES = " 91 92 93 94 95 96 ";
 	public static final String INTERACTIVE_TILES_REDBLUE = " 91 92 93 94 ";
 	public static final String INTERACTIVE_TILES_ONOFF = " 95 96 ";
-	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 181 182 183 184 185 186 187 188 ";
+	public static final String BACKGROUND_MISC_TILES = " 131 132 133 134 135 136 137 138 139 140 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 ";
 	public static final String ANIMATED_TILES = " 76 77 ";
+	
+	/*
+	 * Constants for Matryoshka size
+	 */
+	public static final Dimension MATRYOSHKA_L = new Dimension(64, 96);
+	public static final Dimension MATRYOSHKA_M = new Dimension(44, 64);
+	public static final Dimension MATRYOSHKA_S = new Dimension(32, 32);
 	
 	/*
 	 * Constants that is used normally.
@@ -81,7 +88,7 @@ public class Constants {
 	/*
 	 * Game data constants
 	 */
-	public static final int START_LEVEL = 5;
+	public static final int START_LEVEL = 6;
 	public static final Dimension POS_KANGAROO_START = new Dimension(10, 186);
 	public static final Dimension POS_CLOCK = new Dimension(10, 20);
 	public static final Dimension POS_DEATH = new Dimension(70, 20);

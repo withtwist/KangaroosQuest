@@ -31,6 +31,8 @@ public class AnimationFactory {
 			return new HorseAnimation();
 		case 118:
 			return new MatryoshkaAnimation(c);
+		case 119:
+			return new IceCrabAnimation();
 		default:
 			return null;
 		
