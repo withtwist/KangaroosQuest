@@ -120,7 +120,7 @@ public class GameView extends JPanelWithBackground {
 		/* Render the interactive objects */
 		for (int i = 0; i < gm.getGameMap().getIObjectSize(); i++) {
 			InteractiveObject io = gm.getGameMap().getIObject(i);
-			if (io.getPosition().getX() > drawFrom
+			if (io.getPosition().getX() > drawFrom - 1 
 					&& io.getPosition().getX() < drawFrom + 32) {
 				Image img = Toolkit.getDefaultToolkit().getImage(
 						"resources/gfx/tiles/tileChart.png");
@@ -140,7 +140,7 @@ public class GameView extends JPanelWithBackground {
 		/* Render the creatures */
 		for (int i = 0; i < gm.getGameMap().getCreatureSize(); i++) {
 			Creature c = gm.getGameMap().getCreatureAt(i);
-			if (c.getPosition().getX() > drawFrom * 32
+			if (c.getPosition().getX() > drawFrom * 31
 					&& c.getPosition().getX() < (drawFrom + 32) * 32) {
 				int xP = c.getPosition().getX();
 				int yP = c.getPosition().getY();

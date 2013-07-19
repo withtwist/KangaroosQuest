@@ -19,12 +19,13 @@ public class TurtleCreature implements Creature {
 	private Position startPos;
 	private Direction currentDir;
 	private int speed = 1;
-	private boolean inShell = false;
+	private boolean inShell;
 
 	public TurtleCreature(Position spawnPos) {
 		startPos = spawnPos;
 		currentPos = spawnPos;
 		currentDir = Direction.DIRECTION_WEST;
+		inShell = false;
 	}
 
 	@Override

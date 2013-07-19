@@ -33,7 +33,7 @@ public class TurtleAnimation implements Animation {
 				"resources/gfx/sheets/turtle_64x32.png");
 		this.width = 64;
 		this.height = 32;
-		this.inShell = turtle.isKillable();
+		this.inShell = !turtle.isKillable();
 		this.dir = turtle.getDirection();
 
 	}
