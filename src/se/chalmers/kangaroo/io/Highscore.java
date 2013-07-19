@@ -1,5 +1,7 @@
 package se.chalmers.kangaroo.io;
 
+import java.io.File;
+import se.chalmers.kangaroo.constants.Constants;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -7,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Writer;
 import java.util.Scanner;
+
 
 /**
  * This is a class that manages the highscore in a file.
@@ -17,9 +20,18 @@ import java.util.Scanner;
 public class Highscore {
 	private static Highscore highscore;
 	private static final String FILE_NAME = "resources/highscore.txt";
+	File highscoreFile = new File(FILE_NAME);
 	private static final int nbrOfScores = 10;
 
 	private Highscore() {
+		if (!highscoreFile.exists()) {
+			try {
+				highscoreFile.createNewFile();
+				resetHighscore();
+			} catch (IOException e) {
+				System.out.println("IO Exception when creating the file.");
+			}
+		}
 	}
 
 	/**
@@ -31,6 +43,27 @@ public class Highscore {
 		return highscore;
 	}
 
+	private void resetHighscore(){
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i <= Constants.NUMBER_OF_LEVELS; i++){
+			sb.append("level");
+			sb.append(i);
+			sb.append("\n");
+			for(int j = 0; j < 10; j++){
+				sb.append("Kangaroo 999999 999 ");
+			}
+			sb.append("\n");
+		}
+		Writer w;
+		try {
+			w = new FileWriter(FILE_NAME);
+			w.write(sb.toString());
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * When a level is finished this should be called. Will automatically add
 	 * the player to the highscore if the time is low enough.

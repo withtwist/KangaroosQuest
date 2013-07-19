@@ -3,8 +3,10 @@ package se.chalmers.kangaroo.model;
 import java.awt.geom.Rectangle2D;
 
 import se.chalmers.kangaroo.constants.Constants;
+import se.chalmers.kangaroo.io.Stats;
 import se.chalmers.kangaroo.model.creatures.Creature;
 import se.chalmers.kangaroo.model.creatures.FishCreature;
+import se.chalmers.kangaroo.model.creatures.GiantCrabCreature;
 import se.chalmers.kangaroo.model.creatures.HorseCreature;
 import se.chalmers.kangaroo.model.creatures.MatryoshkaCreature;
 import se.chalmers.kangaroo.model.kangaroo.Item;
@@ -13,6 +15,7 @@ import se.chalmers.kangaroo.model.utils.Direction;
 import se.chalmers.kangaroo.model.utils.Position;
 import se.chalmers.kangaroo.utils.GameSound;
 import se.chalmers.kangaroo.utils.GameTimer;
+import se.chalmers.kangaroo.utils.GeneralTimer;
 
 /**
  * A class to represent the model of a platform game.
@@ -51,9 +54,16 @@ public class GameModel {
 	private boolean gameFinished;
 
 	private GameSound s;
+	
+	private Stats stats;
+	
+	private GeneralTimer gt;
 
 	public GameModel() {
 		super();
+		stats = Stats.getInstance();
+		gt = GeneralTimer.getInstace();
+		gt.start();
 		levelFinished = false;
 		gameFinished = false;
 		currentLevel = Constants.START_LEVEL;
@@ -183,6 +193,7 @@ public class GameModel {
 						kangaroo.setPosition(new Position(kangaroo
 								.getPosition().getX(), kangaroo.getPosition()
 								.getY() - 5));
+						stats.increaseEnemyKilled();
 					}else{
 						s.playSfx("creaturedeath");
 						kangaroo.setVerticalSpeed(-6.5f);
@@ -191,6 +202,7 @@ public class GameModel {
 								.getY() - 5));
 					}
 				} else {
+					stats.increaseKilledByEnemy();
 					s.playSfx("death");
 					restartLevel();
 				}
@@ -303,6 +315,7 @@ public class GameModel {
 
 	/* When one level is finished this method should be invoked. */
 	private void changeLevel() {
+		stats.increaseFinishedCourses();
 		// setHighScore(currentLevel, time);
 		levelFinished = true;
 

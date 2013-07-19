@@ -23,9 +23,9 @@ public class Constants {
 	 */
 
 	public static final int TILE_INVISIBLE = 42;
-	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 21 22 23 24 25 26 27 28 31 33 34 ";
+	public static final String COLLIDE_IDS = " 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 21 22 23 24 25 26 27 28 31 33 34 ";
 	public static final String ITEM_IDS = " 51 52 53 54 ";
-	public static final String CREATURE_IDS = " 111 112 113 114 115 116 117 118 119 ";
+	public static final String CREATURE_IDS = " 111 112 113 114 115 116 117 118 119 120 ";
 	public static final String IOBJECTS_IDS = " 71 72 73 74 ";
 	public static final String IOBJECTS_IDS_REDBLUE = " 71 72 ";
 	public static final String IOBJECTS_IDS_ONOFF = " 73 74 ";
@@ -86,9 +86,14 @@ public class Constants {
 	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 	/*
+	 * Constants for stats
+	 */
+	public static final String STATS_FILE_NAME = "stats.txt";
+	
+	/*
 	 * Game data constants
 	 */
-	public static final int START_LEVEL = 6;
+	public static final int START_LEVEL = 0;
 	public static final Dimension POS_KANGAROO_START = new Dimension(10, 186);
 	public static final Dimension POS_CLOCK = new Dimension(10, 20);
 	public static final Dimension POS_DEATH = new Dimension(70, 20);

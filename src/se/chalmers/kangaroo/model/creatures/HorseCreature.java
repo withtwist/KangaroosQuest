@@ -37,7 +37,7 @@ public class HorseCreature implements Creature {
 
 		int polyY[] = { pos.getY() + 0, pos.getY() + 0, pos.getY() + 30, pos.getY() + 30, pos.getY() + 96,
 				pos.getY() + 96 };
-		return new Polygon(polyX, polyY, 4);
+		return new Polygon(polyX, polyY, 6);
 
 	}
 

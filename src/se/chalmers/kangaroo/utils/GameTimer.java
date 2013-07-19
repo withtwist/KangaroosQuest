@@ -58,7 +58,7 @@ public class GameTimer {
 	 * set isPaused to false.
 	 */
 	public void unpause() {
-		totalPausTime = totalPausTime + (System.nanoTime() - pausStartTime);
+		startTime += (System.nanoTime() - pausStartTime);
 		isPaused = false;
 	}
 
@@ -83,9 +83,9 @@ public class GameTimer {
 	 */
 	public long getElapsedNanoTime() {
 		if (isPaused == true) {
-			return pausStartTime - (startTime + totalPausTime);
+			return pausStartTime - startTime;
 		} else {
-			return System.nanoTime() - (startTime + totalPausTime);
+			return System.nanoTime() - startTime;
 		}
 	}
 

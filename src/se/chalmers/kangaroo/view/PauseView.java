@@ -18,10 +18,11 @@ import javax.swing.ImageIcon;
  * 
  */
 public class PauseView extends JPanelWithBackground implements MouseListener {
-	private Menubutton resume, highScore, options, exitGame;
+	private Menubutton resume, highScore, stats, options, exitGame;
 	private String viewName = "gameview";
 	private ChangeView cv;
 	private GameView gv;
+	private StatsView sv;
 
 	/**
 	 * The constructor for the PauseView. Takes a string as a paramether where
@@ -41,6 +42,7 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		this.setBackground(Color.BLACK);
 		resume = new Menubutton("resources/gfx/buttons/resume.png");
 		highScore = new Menubutton("resources/gfx/buttons/highscore.png");
+		stats = new Menubutton("resources/gfx/buttons/stats.png");
 		options = new Menubutton("resources/gfx/buttons/options.png");
 		exitGame = new Menubutton("resources/gfx/buttons/exitgame.png");
 		
@@ -49,6 +51,8 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		this.add(resume);
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(highScore);
+		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
+		this.add(stats);
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
 		this.add(options);
 		this.add(new Menubutton("resources/gfx/misc/transparent.png"));
@@ -63,6 +67,7 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 
 		resume.addMouseListener(this);
 		highScore.addMouseListener(this);
+		stats.addMouseListener(this);
 		options.addMouseListener(this);
 		exitGame.addMouseListener(this);
 	}
@@ -93,6 +98,9 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon(
 					"resources/gfx/buttons/highscore_onHover.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats_onHover.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon(
 					"resources/gfx/buttons/options_onHover.png"));
@@ -111,6 +119,8 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 			resume.setIcon(new ImageIcon("resources/gfx/buttons/resume.png"));
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon("resources/gfx/buttons/highscore.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon("resources/gfx/buttons/stats.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon("resources/gfx/buttons/options.png"));
 		if (e.getSource() == exitGame)
@@ -129,6 +139,9 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon(
 					"resources/gfx/buttons/highscore_onSelect.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats_onSelect.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon(
 					"resources/gfx/buttons/options_onSelect.png"));
@@ -152,6 +165,10 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore) {
 			highScore.setIcon(new ImageIcon("resources/gfx/buttons/highscore.png"));
 			cv.highscoreView(viewName);
+		}
+		if (e.getSource() == stats) {
+			stats.setIcon(new ImageIcon("resources/gfx/buttons/stats.png"));
+			cv.statsView(viewName);
 		}
 
 		if (e.getSource() == options) {

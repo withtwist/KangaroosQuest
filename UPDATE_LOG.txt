@@ -1,0 +1,116 @@
+
+	///UPDATE LOG///
+	
+		TODO before RELEASE 1.0:
+			Bugs
+				- Creatures and IObject "disappears" when 
+				  1 pixel out of screen on left
+				- Turtle stuck on position and out of shell, but immortal
+				- Moving 1 pixel when jump to left
+				- Game crashes when last level is finished
+				- Black background on logo when pausing
+				- Finished screen not covering whole screen
+				- The time still goes when pausing the game
+				
+			Implement
+				- Different background for each level
+				- Different background for each finished level screen
+				- Finished game music
+				
+			GFX
+				- Create background for each level
+				- Create background for each finished level screen
+				- Create a proper start screen background
+				- Tile for scyscraper top
+				
+			Levels
+				- Refine the levels until they are finished
+				
+			Highscore
+				- Set default highscore to 9999.99 instead
+				- Fix all the images for levels
+				- Fix all the names for levels
+				
+			Music
+				- Compose music for each level
+				- Compose music for finished game
+				- Create sound effect for sumo stomp
+	
+		VERSION 1.0b
+			Levels
+				8 new levels for New Game-mode that takes Kangaroo 
+				through a journey across the world to reach Australia:
+					- New York
+					- Maple Leaf
+					- Icy Mountain
+					- Sea World
+					- Homeland
+					- Russia
+					- Rising Sun
+					- The Showdown
+			
+			Creatures
+				5 new creatures to fit the levels:
+					- Fish
+					- Fruit?!
+					- Matryoshka
+					- Ice Crab
+					- Boss, there is no weak point for massive damage...
+					
+			Tiles
+				As much as 52 new tiles to match the new level:
+					- Concrete
+					- Craters
+					- Sand
+					- Tree
+					- Chorals
+					- Sign
+					- Scyscraper
+					- Asian building
+					- Cactus
+					- Cage
+			
+			Animated tile
+				Added animated tile as a new feature
+				
+			Stats
+				Implemented stats as a feature in the menu:
+					- Time spent
+					- Courses cleared
+					- Creature killed
+					- Times killed by creature
+					- Number of respawn
+					- Number of jumps
+			
+			GFX
+				- Updated every view to get a nice background
+				- Fixed a better background for the time and death count
+				
+			Bugs
+				- Creatures now respawn at same place as their start position
+				- Fish and Horse will not crash the game if they go out of level
+				- Sumo will no longer be able to jump down
+		
+		VERSION 3.0a
+			- Start Menu
+			- New Game - mode
+				- 8 functioning test levels
+				- Creatures
+					- Crab
+					- Turtle
+					- Black & White
+					- Smurf
+					- Sumo
+				- Item
+					- Double Jump
+				- Interactive Objects
+					- Red/Blue Switch
+					- On/Off Switch
+			- Option
+				- Custom controls
+				- Sound volume
+				- Music volume
+		
+		VERSION 1.0a
+			- Working game
+			- 1 test level

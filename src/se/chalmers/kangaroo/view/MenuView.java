@@ -8,7 +8,9 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 
 import se.chalmers.kangaroo.constants.Constants;
+import se.chalmers.kangaroo.io.Stats;
 import se.chalmers.kangaroo.utils.GameSound;
+import se.chalmers.kangaroo.utils.GeneralTimer;
 
 /**
  * The view of the menu. Will create the menu that shows when the game is
@@ -20,11 +22,13 @@ import se.chalmers.kangaroo.utils.GameSound;
  * 
  */
 public class MenuView extends JPanelWithBackground implements MouseListener {
-	private Menubutton newGame, highScore, options, exitGame;
+	private Menubutton newGame, highScore, stats, options, exitGame;
 
 	private ChangeView cv;
 	private GameSound s;
 	private String viewName = "menuview";
+	private GeneralTimer gt;
+	private Stats sts;
 
 	/**
 	 * The constructor for the MenuView. Takes a String and a Changeview as
@@ -37,6 +41,7 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 	public MenuView(String bgpath, ChangeView cv) {
 		super(bgpath);
 		this.cv = cv;
+		sts = Stats.getInstance();
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
 		this.setSize(Constants.RESOLUTION_WIDTH, Constants.RESOLUTION_WIDTH);
@@ -44,17 +49,18 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		s.playBgMusic("menumusic");
 		newGame = new Menubutton("resources/gfx/buttons/newgame.png");
 		highScore = new Menubutton("resources/gfx/buttons/highscore.png");
+		stats = new Menubutton("resources/gfx/buttons/stats.png");
 		options = new Menubutton("resources/gfx/buttons/options.png");
 		exitGame = new Menubutton("resources/gfx/buttons/exitgame.png");
 
 		this.add(Box.createVerticalGlue());
 		this.add(new Menubutton("resources/gfx/misc/menu_logo.gif"));
 		this.add(Box.createVerticalGlue());
-		this.add(Box.createVerticalGlue());
-		this.add(Box.createVerticalGlue());
 		this.add(newGame);
 		this.add(Box.createVerticalGlue());
 		this.add(highScore);
+		this.add(Box.createVerticalGlue());
+		this.add(stats);
 		this.add(Box.createVerticalGlue());
 		this.add(options);
 		this.add(Box.createVerticalGlue());
@@ -65,6 +71,7 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 
 		newGame.addMouseListener(this);
 		highScore.addMouseListener(this);
+		stats.addMouseListener(this);
 		options.addMouseListener(this);
 		exitGame.addMouseListener(this);
 	}
@@ -89,6 +96,9 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon(
 					"resources/gfx/buttons/highscore_onHover.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats_onHover.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon(
 					"resources/gfx/buttons/options_onHover.png"));
@@ -108,6 +118,9 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon(
 					"resources/gfx/buttons/highscore.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon("resources/gfx/buttons/options.png"));
 		if (e.getSource() == exitGame)
@@ -127,6 +140,9 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == highScore)
 			highScore.setIcon(new ImageIcon(
 					"resources/gfx/buttons/highscore_onSelect.png"));
+		if (e.getSource() == stats)
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats_onSelect.png"));
 		if (e.getSource() == options)
 			options.setIcon(new ImageIcon(
 					"resources/gfx/buttons/options_onSelect.png"));
@@ -153,6 +169,11 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 					"resources/gfx/buttons/highscore.png"));
 			cv.highscoreView(viewName);
 		}
+		if (e.getSource() == stats) {
+			stats.setIcon(new ImageIcon(
+					"resources/gfx/buttons/stats.png"));
+			cv.statsView(viewName);
+		}
 
 		if (e.getSource() == options) {
 			options.setIcon(new ImageIcon("resources/gfx/buttons/options.png"));
@@ -162,6 +183,9 @@ public class MenuView extends JPanelWithBackground implements MouseListener {
 		if (e.getSource() == exitGame) {
 			exitGame.setIcon(new ImageIcon("resources/gfx/buttons/exitGame.png"));
 			s.playBgMusic("empty");
+			gt = GeneralTimer.getInstace();
+			gt.end();
+			sts.increaseTime(gt.getTime());
 			System.exit(0);
 		}
 	}

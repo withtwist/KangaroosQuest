@@ -3,11 +3,15 @@ package se.chalmers.kangaroo.view;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import se.chalmers.kangaroo.io.Stats;
 import se.chalmers.kangaroo.model.GameModel;
+import se.chalmers.kangaroo.utils.GeneralTimer;
 
 /**
  * A class that lets you change between the different views in the game. The
@@ -28,6 +32,9 @@ public class ChangeView extends JFrame {
 	private FinishedView fv;
 	private String prevView;
 	private GameModel gm;
+	private Stats stats;
+	private GeneralTimer gt;
+	private StatsView sv;
 
 	/**
 	 * Adds a panel to itself and places the diffrent views in itself. The
@@ -37,14 +44,27 @@ public class ChangeView extends JFrame {
 
 	public ChangeView(GameModel gm) {
 		this.gm = gm;
+		stats = Stats.getInstance();
 		ov = new OptionView("resources/gfx/misc/option_bg.png", this);
 		hv = new HighscoreView("resources/gfx/misc/highscore_bg.png", this);
 		mv = new MenuView("resources/gfx/misc/menu_bg.png", this);
 		fv = new FinishedView(this);
 		shv = new ShowHighscoreView("resources/gfx/misc/showhighscore_bg.png", this, 0);
+		sv = new StatsView("resources/gfx/misc/stats_bg.png", this);
 
 		jp = new JPanel(new CardLayout());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		 
+		addWindowListener( new WindowAdapter()
+		 {
+		   public void windowClosing(WindowEvent e)
+		    {
+		      gt = GeneralTimer.getInstace();
+		      gt.end();
+		      stats.increaseTime(gt.getTime());
+			  System.exit(0);
+		     }
+		  });
 		setSize(1024, 576);
 		setResizable(false);
 		Dimension win = Toolkit.getDefaultToolkit().getScreenSize();
@@ -58,6 +78,7 @@ public class ChangeView extends JFrame {
 		jp.add(hv, "highscoreview");
 		jp.add(fv, "finishedview");
 		jp.add(shv, "showHighscoreView");
+		jp.add(sv, "statsView");
 		add(jp);
 		setVisible(true);
 		jp.setVisible(true);
@@ -150,5 +171,12 @@ public class ChangeView extends JFrame {
 		CardLayout cl = (CardLayout) jp.getLayout();
 		jp.add(shv, "showhighscoreview");
 		cl.show(jp, "showhighscoreview");
+	}
+	
+	public void statsView(String prevView){
+		sv = new StatsView("resources/gfx/misc/stats_bg.png", this);
+		this.prevView = prevView;
+		CardLayout cl = (CardLayout) jp.getLayout();
+		cl.show(jp, "statsView");
 	}
 }

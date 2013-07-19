@@ -36,6 +36,8 @@ public class CreatureFactory {
 			return new MatryoshkaCreature(p);
 		case 119:
 			return new IceCrabCreature(p);
+		case 120:
+			return new GiantCrabCreature(p);
 		default:
 			return null;
 		}

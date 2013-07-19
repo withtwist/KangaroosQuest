@@ -2,6 +2,7 @@ package se.chalmers.kangaroo.model.kangaroo;
 
 import java.awt.Polygon;
 
+import se.chalmers.kangaroo.io.Stats;
 import se.chalmers.kangaroo.model.utils.Direction;
 import se.chalmers.kangaroo.model.utils.Position;
 import se.chalmers.kangaroo.utils.GameSound;
@@ -35,6 +36,8 @@ public class Kangaroo{
 
 	private boolean immortal = false;
 	private GameSound s;
+	
+	private Stats stats;
 
 	/**
 	 * The constructor for Kangaroo.
@@ -43,6 +46,7 @@ public class Kangaroo{
 	 * @return
 	 */
 	public Kangaroo(Position spawnPos) {
+		stats = Stats.getInstance();
 		this.direction = Direction.DIRECTION_NONE;
 		this.pos = spawnPos;
 		this.spawnPos = spawnPos;
@@ -202,6 +206,7 @@ public class Kangaroo{
 	 */
 	public void jump() {
 		if (isJumping == false) {
+			stats.increaseJumps();
 			s.playSfx("jump");
 			this.isJumping = true;
 			this.isFalling = true;
@@ -221,6 +226,7 @@ public class Kangaroo{
 			}.start();
 
 		} else if (enableDoubleJump) {
+			stats.increaseJumps();
 			s.playSfx("doubleJump");
 			this.verticalSpeed = -8.7f;
 			enableDoubleJump = false;
@@ -273,6 +279,7 @@ public class Kangaroo{
 	 * sets all the speeds to 0.
 	 */
 	public void reset() {
+		stats.increaseKilledByRespawn();
 		this.pos = spawnPos;
 		this.horizontalSpeed = 0f;
 		this.verticalSpeed = 0f;
