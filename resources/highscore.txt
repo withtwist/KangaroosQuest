@@ -1,13 +1,13 @@
 level0
-Lawsuit 69240 0 Sub0 217960 9 Sean 287500 8 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Lawsuit 69240 0 Kangaroo 214080 7 Sub0 217960 9 Sean 287500 8 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level1
-Lawsuit 42940 3 Sean 69010 1 Sub0 71700 5 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Lawsuit 42940 3 Sean 69010 1 Sub0 71700 5 Kangaroo 220850 17 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level2
 Sub0 93260 0 Lawsuit 221700 2 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level3
-Sub0 50060 2 Lawsuit 58610 3 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Sub0 50060 2 Lawsuit 58610 3 Kangaroo 163180 16 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level4
-Sub0 263580 49 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Sub0 263580 49 Kangaroo 431050 73 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level5
 Sub0 227700 17 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level6
