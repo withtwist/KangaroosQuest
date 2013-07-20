@@ -8,9 +8,12 @@
 				- Turtle stuck on position and out of shell, but immortal #Think i fixed it
 				- Moving 1 pixel when jump to left #Didnt get it
 				- Game crashes when last level is finished #Dont think so, it worked for me?
-				- Black background on logo when pausing
+				- Black background on logo when pausing #Fixed
 				- Finished screen not covering whole screen
-				- The time still goes when pausing the game
+				- The time still goes when pausing the game #Fixed, if the pause+played time together is not needed..
+
+				- Need "main menu"-option when game is paused?
+				- There is a button behind the logo when game is paused
 				
 			Implement
 				- Different background for each level

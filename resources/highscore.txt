@@ -1,5 +1,5 @@
 level0
-Lawsuit 69240 0 Kangaroo 214080 7 Sub0 217960 9 Sean 287500 8 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
+Lawsuit 69240 0 Kangaroo 88260 1 Kangaroo 214080 7 Sub0 217960 9 Sean 287500 8 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level1
 Lawsuit 42940 3 Sean 69010 1 Sub0 71700 5 Kangaroo 220850 17 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 Kangaroo 999999 999 
 level2

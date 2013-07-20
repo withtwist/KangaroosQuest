@@ -194,6 +194,7 @@ public class GameView extends JPanelWithBackground {
 		this.revalidate();
 		this.repaint();
 		this.validate();
+		gm.togglePause();
 	}
 
 	public void showVictoryView() {

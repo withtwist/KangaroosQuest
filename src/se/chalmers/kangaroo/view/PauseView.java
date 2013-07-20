@@ -39,7 +39,8 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
 		this.setSize(1024, 576);
-		this.setBackground(Color.BLACK);
+		this.setBackground(new Color(0, 0, 0, 0));
+		this.setOpaque(true);
 		resume = new Menubutton("resources/gfx/buttons/resume.png");
 		highScore = new Menubutton("resources/gfx/buttons/highscore.png");
 		stats = new Menubutton("resources/gfx/buttons/stats.png");
@@ -80,11 +81,7 @@ public class PauseView extends JPanelWithBackground implements MouseListener {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-		((Graphics2D) g).setComposite(AlphaComposite.getInstance(
-				AlphaComposite.SRC_OVER, 0.2f)); // draw transparent background
-		super.paintComponent(g);
-		((Graphics2D) g).setComposite(AlphaComposite.getInstance(
-				AlphaComposite.SRC_OVER, 1.0f)); // turn on opacity
+
 	}
 
 	/**

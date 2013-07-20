@@ -84,7 +84,6 @@ public class GameModel {
 	 * A method to update the game.
 	 */
 	public void update() {
-		System.out.println(kangaroo);
 		oldPos = kangaroo.getPosition();
 		kangaroo.move();
 		updateCreatures();
@@ -403,5 +402,9 @@ public class GameModel {
 	 */
 	public int getLevel() {
 		return currentLevel;
+	}
+	
+	public void togglePause(){
+		timer.togglePause();
 	}
 }

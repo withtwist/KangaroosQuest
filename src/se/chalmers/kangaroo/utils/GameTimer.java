@@ -9,17 +9,14 @@ import se.chalmers.kangaroo.constants.Constants;
  * 
  */
 public class GameTimer {
-	private long startTime, endTime, pausStartTime, totalPausTime;
+	private long startTime, elapsedTime, firstStart;
 	private boolean isPaused;
 
 	/**
 	 * A constructor that initiate all the values.
 	 */
 	public GameTimer() {
-		startTime = 0;
-		endTime = 0;
-		pausStartTime = 0;
-		totalPausTime = 0;
+		elapsedTime = 0;
 		isPaused = false;
 	}
 
@@ -28,6 +25,7 @@ public class GameTimer {
 	 * and initiate it to a variable startTime.
 	 */
 	public void start() {
+		firstStart = System.nanoTime();
 		startTime = System.nanoTime();
 	}
 
@@ -37,29 +35,20 @@ public class GameTimer {
 	 * game. This will be initiated to a variable endTime.
 	 */
 	public void stop() {
-		endTime = System.nanoTime() - (startTime + totalPausTime);
-
+		addElapsedTime();
 	}
-
+	
 	/**
-	 * Pause the GameTimer. This will save the current time to a variable
-	 * pausStartTime and set isPaused to true.
+	 * Toggles whether the time should run or not
 	 */
-	public void pause() {
-		pausStartTime = System.nanoTime();
-		isPaused = true;
-
-	}
-
-	/**
-	 * Unpause the game. This will take the current time and subtract it with
-	 * the time when the pause occurred. This value will be added to a variable
-	 * totalPausTime that will be used to calculate the end time. It will also
-	 * set isPaused to false.
-	 */
-	public void unpause() {
-		startTime += (System.nanoTime() - pausStartTime);
-		isPaused = false;
+	public void togglePause(){
+		if(!isPaused){ //pause
+			isPaused = true;
+			elapsedTime += System.nanoTime() - startTime;
+		}else{ //resuming
+			isPaused = false;
+			startTime = System.nanoTime();
+		}
 	}
 
 	/**
@@ -82,11 +71,8 @@ public class GameTimer {
 	 * @return
 	 */
 	public long getElapsedNanoTime() {
-		if (isPaused == true) {
-			return pausStartTime - startTime;
-		} else {
-			return System.nanoTime() - startTime;
-		}
+		addElapsedTime();
+		return elapsedTime;
 	}
 
 	/**
@@ -96,7 +82,14 @@ public class GameTimer {
 	 * @return the total time from start to stop in seconds and two decimals.
 	 */
 	public double getResult() {
-		return ((int) (endTime * Constants.NANO_TO_SECOND * 100)) / 100.0;
+		return ((int) (elapsedTime * Constants.NANO_TO_SECOND * 100)) / 100.0;
+	}
+	
+	private void addElapsedTime(){
+		if(!isPaused){
+			elapsedTime += System.nanoTime() - startTime;
+			startTime = System.nanoTime();
+		}
 	}
 
 	public String toString() {
